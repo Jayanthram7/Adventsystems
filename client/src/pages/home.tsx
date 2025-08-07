@@ -45,16 +45,16 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 mb-8 border border-blue-200">
-            <span className="text-tally-blue font-semibold text-sm">✨ AI-Powered Assistant</span>
+            <span className="text-tally-blue font-semibold text-sm">AI Powered Tally Assistant ✨</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-tally-gray mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-tally-blue to-blue-600 bg-clip-text text-transparent">
+            <span className="text-blue-700">
               TallyPrime
             </span>
-            <br />
-            <span className="text-tally-gray">Assistant</span>
+            <span className="text-tally-gray"> Assistant</span>
           </h1>
+
           
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
             Your intelligent business companion for <span className="font-semibold text-tally-blue">accounting</span>, 
@@ -63,7 +63,7 @@ export default function Home() {
           </p>
           
           {/* Quick Features Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-4">
             <div className="bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-200">
               <span className="text-sm text-gray-700">🧮 Smart Accounting</span>
             </div>
@@ -81,7 +81,7 @@ export default function Home() {
       </section>
 
       {/* Main Dashboard */}
-      <section className="py-20 bg-white relative">
+      <section className="py-10 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left Column - Features */}
