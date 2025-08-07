@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="bg-white px-3 py-1 rounded mr-3">
+              <div className="px-3 py-1 rounded mr-3 bg-[#0f34a3]">
                 <span className="text-tally-blue font-bold text-lg italic">Advent</span>
               </div>
               <span className="text-white font-semibold text-xl">Systems</span>
