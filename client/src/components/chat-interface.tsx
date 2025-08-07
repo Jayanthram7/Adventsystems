@@ -223,7 +223,12 @@ What would you like to know today?`,
                     ? 'bg-tally-blue text-white' 
                     : 'bg-gray-50 text-gray-700'
                 }`}>
-                  <p className="whitespace-pre-line">{message.message}</p>
+                  <div 
+                    className="whitespace-pre-line"
+                    dangerouslySetInnerHTML={{
+                      __html: message.message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    }}
+                  />
                 </div>
                 {message.isUser && (
                   <div className="w-10 h-10 bg-tally-orange rounded-full flex items-center justify-center flex-shrink-0">
