@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X, Send, MessageCircle, Bot, User, Search } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -176,8 +175,8 @@ What would you like to know today?`,
         </div>
       </div>
       {/* Full Screen Chat Modal */}
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-none w-full h-full inset-0 m-0 p-0 flex flex-col border-0 rounded-none">
+      {isOpen && (
+        <div className="fixed inset-0 z-50 bg-white flex flex-col">
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
             <div className="flex items-center space-x-3">
@@ -278,8 +277,8 @@ What would you like to know today?`,
               This assistant uses AI and may occasionally provide inaccurate information. Please verify important details.
             </p>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      )}
     </>
   );
 }
