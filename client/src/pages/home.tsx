@@ -2,6 +2,7 @@ import { Calculator, Package, TrendingUp } from "lucide-react";
 import Header from "@/components/header";
 import FeatureCard from "@/components/feature-card";
 import ChatInterface from "@/components/chat-interface";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const features = [
@@ -93,6 +94,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

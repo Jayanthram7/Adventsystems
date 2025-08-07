@@ -177,7 +177,7 @@ What would you like to know today?`,
       </div>
       {/* Full Screen Chat Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-none w-screen h-screen m-0 p-0 flex flex-col">
+        <DialogContent className="max-w-none w-full h-full inset-0 m-0 p-0 flex flex-col border-0 rounded-none">
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
             <div className="flex items-center space-x-3">
@@ -185,7 +185,10 @@ What would you like to know today?`,
                 <Bot className="h-5 w-5 text-tally-blue" />
               </div>
               <div>
-                <h3 className="text-white font-semibold text-lg">TallyPrime Assistant</h3>
+                <div className="flex items-center space-x-2">
+                  <h3 className="text-white font-semibold text-lg">TallyPrime Assistant</h3>
+                  <span className="text-white text-lg">✨</span>
+                </div>
                 <p className="text-blue-100 text-sm">Your AI business companion</p>
               </div>
             </div>
