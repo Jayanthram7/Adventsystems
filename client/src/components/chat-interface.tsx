@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X, Minus, Send, MessageCircle, Bot, User } from "lucide-react";
+import { X, Send, MessageCircle, Bot, User, Search } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -177,7 +177,7 @@ What would you like to know today?`,
       </div>
       {/* Full Screen Chat Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-full h-full m-0 p-0 flex flex-col">
+        <DialogContent className="max-w-none w-screen h-screen m-0 p-0 flex flex-col">
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
             <div className="flex items-center space-x-3">
@@ -194,15 +194,7 @@ What would you like to know today?`,
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:text-tally-orange hover:bg-transparent"
-              >
-                <Minus className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(false)}
-                className="text-white hover:text-tally-orange hover:bg-transparent"
+                className="text-white hover:text-tally-orange hover:bg-transparent transition-all duration-200 hover:scale-110"
               >
                 <X className="h-5 w-5" />
               </Button>
@@ -218,10 +210,10 @@ What would you like to know today?`,
                     <Bot className="h-5 w-5 text-white" />
                   </div>
                 )}
-                <div className={`rounded-lg p-4 max-w-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] ${
+                <div className={`rounded-lg p-4 max-w-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] shadow-md ${
                   message.isUser 
                     ? 'bg-tally-blue text-white hover:bg-blue-700 hover:shadow-lg hover:border hover:border-blue-300' 
-                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md hover:border hover:border-gray-200'
+                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-lg hover:border hover:border-gray-200'
                 }`}>
                   <div 
                     className="whitespace-pre-line"
@@ -259,14 +251,17 @@ What would you like to know today?`,
           {/* Chat Input */}
           <div className="border-t border-gray-200 p-6 flex-shrink-0 bg-gradient-to-r from-gray-50 to-white">
             <div className="flex space-x-4">
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask me anything about TallyPrime..."
-                className="flex-1 transition-all duration-200 focus:shadow-lg focus:border-tally-blue hover:shadow-md"
-                disabled={chatMutation.isPending}
-              />
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-tally-blue h-4 w-4" />
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask me anything about TallyPrime..."
+                  className="pl-10 transition-all duration-200 focus:shadow-lg focus:border-tally-blue hover:shadow-md border-2 border-blue-200 focus:border-tally-blue"
+                  disabled={chatMutation.isPending}
+                />
+              </div>
               <Button 
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || chatMutation.isPending}

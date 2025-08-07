@@ -46,29 +46,44 @@ export default function Home() {
       </section>
 
       {/* Main Dashboard */}
-      <section className="py-12">
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column - Features */}
-            <div className="space-y-6">
-              {/* Feature Cards */}
-              {features.map((feature, index) => (
-                <FeatureCard key={index} {...feature} />
-              ))}
+            <div className="space-y-8">
+              {/* Features Heading */}
+              <div className="text-center lg:text-left">
+                <h2 className="text-3xl font-bold text-tally-gray mb-3">
+                  Powerful Features
+                </h2>
+                <p className="text-gray-600 text-lg">
+                  Everything you need to manage your business efficiently
+                </p>
+              </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
-                  <div className="text-2xl font-bold text-tally-blue">24/7</div>
-                  <div className="text-sm text-gray-600">Available</div>
+              {/* Feature Cards */}
+              <div className="space-y-6">
+                {features.map((feature, index) => (
+                  <FeatureCard key={index} {...feature} />
+                ))}
+              </div>
+
+              {/* Enhanced Stats */}
+              <div className="grid grid-cols-3 gap-6 mt-8">
+                <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer">
+                  <div className="text-3xl font-bold text-tally-blue mb-2">24/7</div>
+                  <div className="text-sm text-gray-600 font-medium">Available</div>
+                  <div className="text-xs text-gray-500 mt-1">Always ready to help</div>
                 </div>
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
-                  <div className="text-2xl font-bold text-tally-orange">95%</div>
-                  <div className="text-sm text-gray-600">Accuracy</div>
+                <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer">
+                  <div className="text-3xl font-bold text-tally-orange mb-2">95%</div>
+                  <div className="text-sm text-gray-600 font-medium">Accuracy</div>
+                  <div className="text-xs text-gray-500 mt-1">Reliable responses</div>
                 </div>
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
-                  <div className="text-2xl font-bold text-blue-500">Instant</div>
-                  <div className="text-sm text-gray-600">Response</div>
+                <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer">
+                  <div className="text-3xl font-bold text-blue-500 mb-2">Instant</div>
+                  <div className="text-sm text-gray-600 font-medium">Response</div>
+                  <div className="text-xs text-gray-500 mt-1">Lightning fast</div>
                 </div>
               </div>
             </div>
