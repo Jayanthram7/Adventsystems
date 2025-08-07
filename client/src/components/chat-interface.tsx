@@ -111,28 +111,28 @@ What would you like to know today?`,
     <>
       {/* Chat Preview Card */}
       <div className="lg:sticky lg:top-8">
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-[800px] flex flex-col">
           {/* Chat Header */}
-          <div className="from-tally-blue to-blue-300 px-6 py-4 bg-[#0f34a3]">
+          <div className="from-tally-blue to-blue-300 px-6 py-4 bg-[#0f34a3] flex-shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
                   <Bot className="h-4 w-4 text-tally-blue" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">TallyPrime Assistant</h3>
+                  <h3 className="text-white font-semibold">✨ TallyPrime Assistant</h3>
                   <p className="text-blue-100 text-sm">Ready to help with your business needs</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 <span className="text-white text-sm">Online</span>
               </div>
             </div>
           </div>
 
           {/* Chat Preview Messages */}
-          <div className="p-6 space-y-4 h-64 overflow-y-auto">
+          <div className="p-6 space-y-4 flex-1 overflow-y-auto">
             <div className="flex items-start space-x-3 group">
               <div className="w-8 h-8 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:shadow-lg group-hover:scale-105">
                 <Bot className="h-4 w-4 text-white" />
@@ -159,7 +159,7 @@ What would you like to know today?`,
           </div>
 
           {/* Start Chatting Button */}
-          <div className="p-6 border-t border-gray-100">
+          <div className="p-6 border-t border-gray-100 flex-shrink-0">
             <Button 
               onClick={() => setIsOpen(true)}
               className="w-full bg-tally-orange hover:bg-tally-orange-hover text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg"
@@ -176,7 +176,7 @@ What would you like to know today?`,
       </div>
       {/* Full Screen Chat Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-white flex flex-col">
+        <div className="fixed inset-0 z-[9999] bg-white flex flex-col">
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
             <div className="flex items-center space-x-3">
