@@ -179,7 +179,7 @@ What would you like to know today?`,
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-full h-full m-0 p-0 flex flex-col">
           {/* Chat Header */}
-          <div className="bg-gradient-to-r from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0">
+          <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <Bot className="h-5 w-5 text-tally-blue" />
