@@ -114,7 +114,7 @@ What would you like to know today?`,
       <div className="lg:sticky lg:top-8">
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
           {/* Chat Header */}
-          <div className="bg-gradient-to-r from-tally-blue to-blue-300 px-6 py-4">
+          <div className="from-tally-blue to-blue-300 px-6 py-4 bg-[#0f34a3]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
@@ -175,7 +175,6 @@ What would you like to know today?`,
           </div>
         </div>
       </div>
-
       {/* Full Screen Chat Modal */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-full h-full m-0 p-0 flex flex-col">
