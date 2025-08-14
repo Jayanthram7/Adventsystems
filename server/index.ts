@@ -1,23 +1,19 @@
 import express, { type Request, Response, NextFunction } from "express";
-import cors from "cors"; // ✅ added cors
+import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 
-// ✅ CORS configuration
-const allowedOrigins = [
-  "http://localhost:5173", // dev frontend
-  "https://your-frontend.netlify.app", // prod frontend
-];
-
+// ✅ Allow CORS from anywhere
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true, // ✅ allow cookies & credentials
+    origin: "*", // allow all origins
   })
 );
 
+// or even simpler:
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
