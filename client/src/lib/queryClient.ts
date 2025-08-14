@@ -2,7 +2,7 @@ import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
 // ✅ Base API URL: use Netlify env var in production, fallback to localhost in dev
 const API_BASE =
-  import.meta.env.VITE_API_URL || "http://localhost:5000"; // change port if your backend runs on a different one
+  import.meta.env.VITE_API_URL || "https://tallyprimechat.onrender.com/"; // change port if your backend runs on a different one
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
