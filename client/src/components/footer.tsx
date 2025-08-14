@@ -1,5 +1,5 @@
 import { Phone, Mail, Globe } from "lucide-react";
-import { SiWhatsapp, SiYoutube } from "react-icons/si";
+import { SiWhatsapp, SiYoutube , SiFacebook } from "react-icons/si";
 
 export default function Footer() {
   return (
@@ -9,10 +9,10 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="px-3 py-1 rounded mr-3 bg-[#0f34a3]">
-                <span className="text-tally-blue font-bold text-lg italic">Advent</span>
+              <div className="py-1 rounded mr-3 bg-[#0f34a3]">
+                <span className="text-tally-blue font-bold text-3xl italic">Advent Systems </span>
               </div>
-              <span className="text-white font-semibold text-xl">Systems</span>
+              
             </div>
             <p className="text-blue-100 mb-6 leading-relaxed">
               Empowering businesses with intelligent TallyPrime solutions and AI-powered assistance. 
@@ -21,21 +21,29 @@ export default function Footer() {
             
             {/* Social Icons */}
             <div className="flex space-x-4">
-              <a 
-                href="https://wa.me/your-number" 
-                target="_blank" 
+              <a
+                href="https://wa.me/919965576297?text=Hello%20Advent%20Systems"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 p-3 rounded-full transition-all duration-200 hover:scale-110"
               >
                 <SiWhatsapp className="h-5 w-5" />
               </a>
-              <a 
-                href="https://youtube.com/your-channel" 
-                target="_blank" 
+              <a
+                href="https://youtube.com/your-channel"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-red-500 hover:bg-red-600 p-3 rounded-full transition-all duration-200 hover:scale-110"
               >
                 <SiYoutube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://facebook.com/your-page"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition-all duration-200 hover:scale-110"
+              >
+                <SiFacebook className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -46,11 +54,11 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-blue-100 hover:text-white transition-colors">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">+91 98422 76297 / +91 99655 73231</span>
               </div>
               <div className="flex items-center space-x-3 text-blue-100 hover:text-white transition-colors">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="text-sm">info@adventsystems.com</span>
+                <span className="text-sm">adventsystems@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-blue-100 hover:text-white transition-colors">
                 <Globe className="h-4 w-4 flex-shrink-0" />
@@ -63,10 +71,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2 text-blue-100">
-              <li className="hover:text-white transition-colors cursor-pointer text-sm">TallyPrime Support</li>
-              <li className="hover:text-white transition-colors cursor-pointer text-sm">GST Compliance</li>
-              <li className="hover:text-white transition-colors cursor-pointer text-sm">Business Analytics</li>
-              <li className="hover:text-white transition-colors cursor-pointer text-sm">AI Solutions</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-sm">TallyPrime Gold / Silver License</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-sm">TSS Renewal </li>
+              <li className="hover:text-white transition-colors cursor-pointer text-sm">Tally Server 9</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-sm">Tally Customization</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-sm">Tally Learning ( Corporate & Individual )</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-sm">Third Party Integration</li>
             </ul>
           </div>
         </div>
@@ -74,7 +84,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-blue-400 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-blue-100 text-sm">
-            © 2024 Advent Systems. All rights reserved.
+            © 2025 Advent Systems. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-blue-100 hover:text-white text-sm transition-colors">Privacy Policy</a>

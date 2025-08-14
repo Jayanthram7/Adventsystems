@@ -1,0 +1,527 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TallyPrime Assistant - AI-Powered Business Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tally-blue': '#1e40af',
+                        'tally-blue-light': '#3b82f6',
+                        'tally-orange': '#f59e0b',
+                        'tally-orange-hover': '#d97706',
+                        'tally-gray': '#334155',
+                        'tally-bg': '#f8fafc'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-inter bg-white">
+    <!-- Header -->
+    <header class="bg-tally-blue shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                <!-- Logo and Navigation -->
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center">
+                        <div class="bg-white px-3 py-1 rounded">
+                            <span class="text-tally-blue font-bold text-lg italic">Tally</span>
+                        </div>
+                        <span class="text-white font-semibold ml-2">Assistant</span>
+                    </div>
+                    
+                    <nav class="hidden md:flex items-center space-x-6">
+                        <div class="relative group">
+                            <button class="text-white hover:text-tally-orange transition-colors flex items-center">
+                                Product <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                        </div>
+                        <a href="#" class="text-white hover:text-tally-orange transition-colors">Features</a>
+                        <div class="relative group">
+                            <button class="text-white hover:text-tally-orange transition-colors flex items-center">
+                                Support <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="relative group">
+                            <button class="text-white hover:text-tally-orange transition-colors flex items-center">
+                                Resources <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-white hover:text-tally-orange transition-colors text-sm">TallyPrime</a>
+                    <a href="#" class="text-white hover:text-tally-orange transition-colors text-sm">TallyEdge</a>
+                    <a href="#" class="text-white hover:text-tally-orange transition-colors text-sm">TallyCapital</a>
+                    <a href="#" class="text-white hover:text-tally-orange transition-colors text-sm">TallyEducation</a>
+                    
+                    <div class="flex items-center space-x-2 ml-6">
+                        <button class="text-white hover:text-tally-orange transition-colors">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button class="text-white hover:text-tally-orange transition-colors">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <button class="text-white hover:text-tally-orange transition-colors">Log in</button>
+                        <button class="bg-tally-orange hover:bg-tally-orange-hover text-white px-4 py-2 rounded transition-colors">
+                            Get Started <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen bg-tally-bg">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-tally-bg to-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-tally-gray mb-4">
+                    TallyPrime Assistant
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Your AI-powered business companion for TallyPrime. Get instant help with accounting, inventory management, 
+                    compliance, and business insights through intelligent conversations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Dashboard -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Left Column - Features -->
+                    <div class="space-y-6">
+                        <!-- Feature Cards -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-tally-blue text-white p-3 rounded-lg">
+                                    <i class="fas fa-calculator text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-tally-gray mb-2">Accounting Assistance</h3>
+                                    <p class="text-gray-600 mb-4">Get help with voucher entries, ledger management, and financial reporting. Ask questions about GST compliance and accounting principles.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Voucher Entry</span>
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">GST Compliance</span>
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Reports</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-tally-orange text-white p-3 rounded-lg">
+                                    <i class="fas fa-boxes text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-tally-gray mb-2">Inventory Management</h3>
+                                    <p class="text-gray-600 mb-4">Smart guidance for stock management, purchase orders, and inventory optimization. Real-time insights for better decision making.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Stock Management</span>
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Purchase Orders</span>
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Analytics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-tally-blue-light text-white p-3 rounded-lg">
+                                    <i class="fas fa-chart-line text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-tally-gray mb-2">Business Intelligence</h3>
+                                    <p class="text-gray-600 mb-4">Analyze your business performance with AI-driven insights. Get recommendations for growth and optimization strategies.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Performance Analysis</span>
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Growth Insights</span>
+                                        <span class="bg-tally-bg text-tally-gray px-3 py-1 rounded-full text-sm">Forecasting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
+                                <div class="text-2xl font-bold text-tally-blue">24/7</div>
+                                <div class="text-sm text-gray-600">Available</div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
+                                <div class="text-2xl font-bold text-tally-orange">95%</div>
+                                <div class="text-sm text-gray-600">Accuracy</div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-center">
+                                <div class="text-2xl font-bold text-tally-blue-light">Instant</div>
+                                <div class="text-sm text-gray-600">Response</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Chat Interface Preview -->
+                    <div class="lg:sticky lg:top-8">
+                        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                            <!-- Chat Header -->
+                            <div class="bg-gradient-to-r from-tally-blue to-tally-blue-light px-6 py-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                            <i class="fas fa-robot text-tally-blue"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-white font-semibold">TallyPrime Assistant</h3>
+                                            <p class="text-blue-100 text-sm">Ready to help with your business needs</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        <span class="text-white text-sm">Online</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chat Preview Messages -->
+                            <div class="p-6 space-y-4 h-64 overflow-y-auto">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-robot text-white text-sm"></i>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-lg p-3 flex-1">
+                                        <p class="text-gray-700 text-sm">Hello! I'm your TallyPrime Assistant. I can help you with accounting, inventory management, GST compliance, and business insights. What would you like to know?</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-3 justify-end">
+                                    <div class="bg-tally-blue text-white rounded-lg p-3 max-w-xs">
+                                        <p class="text-sm">How do I create a sales voucher?</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-robot text-white text-sm"></i>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-lg p-3 flex-1">
+                                        <p class="text-gray-700 text-sm">To create a sales voucher in TallyPrime: Go to Gateway of Tally → Vouchers → F8 (Sales). Select the customer, add items, specify quantities and rates. Press Enter to save. Would you like more details on any specific step?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Start Chatting Button -->
+                            <div class="p-6 border-t border-gray-100">
+                                <button 
+                                    onclick="openFullChat()" 
+                                    class="w-full bg-tally-orange hover:bg-tally-orange-hover text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg"
+                                >
+                                    <i class="fas fa-comments"></i>
+                                    <span>Start Chatting</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <p class="text-center text-gray-500 text-sm mt-3">
+                                    Powered by Advanced AI • Free to use
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Full Screen Chat Modal -->
+    <div id="fullChatModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex h-full">
+            <!-- Chat Container -->
+            <div class="bg-white w-full flex flex-col">
+                <!-- Chat Header -->
+                <div class="bg-gradient-to-r from-tally-blue to-tally-blue-light px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-tally-blue text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-semibold text-lg">TallyPrime Assistant</h3>
+                            <p class="text-blue-100 text-sm">Your AI business companion</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button onclick="minimizeChat()" class="text-white hover:text-tally-orange transition-colors">
+                            <i class="fas fa-minus text-xl"></i>
+                        </button>
+                        <button onclick="closeFullChat()" class="text-white hover:text-tally-orange transition-colors">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div id="chatMessages" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Welcome Message -->
+                    <div class="flex items-start space-x-3">
+                        <div class="w-10 h-10 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 flex-1">
+                            <p class="text-gray-700">Welcome to TallyPrime Assistant! I'm here to help you with:</p>
+                            <ul class="mt-2 text-gray-600 text-sm space-y-1">
+                                <li>• Accounting and voucher entries</li>
+                                <li>• Inventory and stock management</li>
+                                <li>• GST compliance and tax queries</li>
+                                <li>• Financial reporting and analysis</li>
+                                <li>• TallyPrime features and troubleshooting</li>
+                            </ul>
+                            <p class="mt-3 text-gray-700">What would you like to know today?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="px-6 py-2 hidden">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-tally-blue rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="border-t border-gray-200 p-6">
+                    <div class="flex space-x-4">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="Ask me anything about TallyPrime..." 
+                            class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-tally-blue focus:border-transparent"
+                            onkeypress="handleKeyPress(event)"
+                        />
+                        <button 
+                            onclick="sendMessage()" 
+                            id="sendButton"
+                            class="bg-tally-orange hover:bg-tally-orange-hover text-white px-6 py-3 rounded-lg transition-colors flex items-center space-x-2"
+                        >
+                            <span>Send</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-2 text-center">
+                        This assistant uses AI and may occasionally provide inaccurate information. Please verify important details.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const GEMINI_API_KEY = 'AIzaSyAQVNkYJ1FXPCf7PIqTQFjCasMRTWdgX84';
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+        // Chat State
+        let chatHistory = [];
+
+        // UI Functions
+        function openFullChat() {
+            document.getElementById('fullChatModal').classList.remove('hidden');
+            document.getElementById('chatInput').focus();
+        }
+
+        function closeFullChat() {
+            document.getElementById('fullChatModal').classList.add('hidden');
+        }
+
+        function minimizeChat() {
+            closeFullChat();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Message Functions
+        function addMessage(content, isUser = false) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start space-x-3 justify-end">
+                        <div class="bg-tally-blue text-white rounded-lg p-4 max-w-2xl">
+                            <p>${content}</p>
+                        </div>
+                        <div class="w-10 h-10 bg-tally-orange rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-10 h-10 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 flex-1 max-w-2xl">
+                            <p class="text-gray-700">${content}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+        }
+
+        // AI Integration
+        async function callGeminiAPI(message) {
+            const systemPrompt = `You are TallyPrime Assistant, an AI helper specializing in TallyPrime accounting software. 
+            Provide helpful, accurate information about:
+            - TallyPrime features and functionality
+            - Accounting principles and best practices
+            - GST compliance and tax matters
+            - Inventory management
+            - Financial reporting
+            - Business insights and recommendations
+            
+            Keep responses concise but informative. Use a professional, helpful tone.
+            If asked about non-TallyPrime topics, politely redirect to TallyPrime-related queries.`;
+
+            try {
+                const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [
+                            {
+                                parts: [
+                                    { text: systemPrompt },
+                                    { text: message }
+                                ]
+                            }
+                        ],
+                        generationConfig: {
+                            temperature: 0.7,
+                            topK: 40,
+                            topP: 0.95,
+                            maxOutputTokens: 1024,
+                        },
+                        safetySettings: [
+                            {
+                                category: "HARM_CATEGORY_HARASSMENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_HATE_SPEECH",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            }
+                        ]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error('Invalid response format from API');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                return 'I apologize, but I\'m experiencing technical difficulties. Please try again in a moment. If the issue persists, you can contact TallyPrime support directly.';
+            }
+        }
+
+        // Main Message Handler
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, true);
+            chatHistory.push({ role: 'user', content: message });
+            
+            // Clear input and show loading
+            input.value = '';
+            showLoading();
+            
+            // Disable send button temporarily
+            const sendButton = document.getElementById('sendButton');
+            sendButton.disabled = true;
+            sendButton.classList.add('opacity-50');
+            
+            try {
+                // Get AI response
+                const response = await callGeminiAPI(message);
+                
+                // Add AI response
+                hideLoading();
+                addMessage(response, false);
+                chatHistory.push({ role: 'assistant', content: response });
+                
+            } catch (error) {
+                hideLoading();
+                addMessage('I apologize for the technical issue. Please try your question again.', false);
+            } finally {
+                // Re-enable send button
+                sendButton.disabled = false;
+                sendButton.classList.remove('opacity-50');
+                input.focus();
+            }
+        }
+
+        // Initialize
+        (function() {
+            // Add any initialization code here
+            console.log('TallyPrime Assistant initialized');
+            
+            // Focus input when modal opens
+            document.getElementById('fullChatModal').addEventListener('transitionend', function() {
+                if (!this.classList.contains('hidden')) {
+                    document.getElementById('chatInput').focus();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

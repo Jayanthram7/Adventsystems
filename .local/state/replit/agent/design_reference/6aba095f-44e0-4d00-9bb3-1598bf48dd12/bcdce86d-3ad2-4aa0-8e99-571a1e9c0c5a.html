@@ -1,0 +1,372 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TallyPrime Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tally-blue': '#1976D2',
+                        'tally-orange': '#FF9800',
+                        'tally-light-blue': '#E3F2FD',
+                        'chat-gray': '#F5F5F5'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="font-inter bg-gray-50 min-h-screen">
+    <!-- @COMPONENT: Header Navigation -->
+    <header class="bg-tally-blue text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- Top Navigation Bar -->
+            <div class="flex items-center justify-between py-2 text-sm border-b border-blue-600">
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-calculator text-tally-orange"></i>
+                        <span class="font-semibold">Tally</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-4">
+                        <span>Company</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <span>TallyPrime</span>
+                    <span>TallyEdge</span>
+                    <span>TallyCapital</span>
+                    <span>TallyEducation</span>
+                </div>
+            </div>
+            
+            <!-- Main Navigation -->
+            <div class="flex items-center justify-between py-3">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-1">
+                        <span>Product</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <span class="hidden md:inline">Pricing</span>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <span>Community</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <span>Customer Hub</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-calculator text-tally-orange text-xl"></i>
+                    <span class="font-semibold text-lg">TallyPrime</span>
+                    <span class="text-sm font-light">Assistant</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-search cursor-pointer hover:text-tally-orange transition-colors"></i>
+                    <i class="fas fa-globe cursor-pointer hover:text-tally-orange transition-colors"></i>
+                    <span class="hidden md:inline cursor-pointer hover:text-tally-orange transition-colors">Log in</span>
+                    <button class="bg-tally-orange text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors">
+                        Download <i class="fas fa-download ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header Navigation -->
+
+    <!-- @COMPONENT: Main Content Area -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- @STATE: showChat:boolean = false -->
+        
+        <!-- Landing Page View -->
+        <div id="landingView" class="text-center max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                TallyPrime Assistant
+            </h1>
+            
+            <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                Get instant help with TallyPrime features, troubleshooting, and best practices. 
+                Your intelligent assistant for all TallyPrime queries.
+            </p>
+            
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-tally-light-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-question-circle text-tally-blue text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Quick Answers</h3>
+                    <p class="text-gray-600">Get instant responses to your TallyPrime questions and queries.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-tally-light-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cogs text-tally-blue text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Feature Guidance</h3>
+                    <p class="text-gray-600">Learn how to use TallyPrime features effectively and efficiently.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-tally-light-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-wrench text-tally-blue text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Troubleshooting</h3>
+                    <p class="text-gray-600">Resolve issues and errors with step-by-step guidance.</p>
+                </div>
+            </div>
+            
+            <!-- Start Chatting Button -->
+            <button 
+                id="startChatBtn" 
+                class="bg-tally-orange text-white px-12 py-4 rounded-lg text-xl font-semibold hover:bg-orange-600 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                data-event="click:showChatInterface"
+            >
+                <i class="fas fa-comments mr-2"></i>
+                Start Chatting
+            </button>
+        </div>
+        
+        <!-- Chat Interface -->
+        <div id="chatView" class="hidden max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- Chat Header -->
+                <div class="bg-tally-blue text-white p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-tally-orange rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">TallyPrime Assistant</h3>
+                            <p class="text-sm opacity-90">Online • Ready to help</p>
+                        </div>
+                    </div>
+                    <button 
+                        id="closeChatBtn" 
+                        class="text-white hover:text-tally-orange transition-colors"
+                        data-event="click:hideChatInterface"
+                    >
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Chat Messages Container -->
+                <div id="chatMessages" class="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                    <!-- Welcome Message -->
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-tally-orange rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white text-sm"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm max-w-xs">
+                            <p class="text-gray-800">Hello! I'm your TallyPrime Assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                    
+                    <!-- @MAP: messages.map(message => ( -->
+                    <!-- Chat messages will be dynamically added here -->
+                    <!-- @END_MAP )) -->
+                </div>
+                
+                <!-- Chat Input -->
+                <div class="p-4 border-t border-gray-200 bg-white">
+                    <div class="flex items-center space-x-3">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="Type your TallyPrime question here..."
+                            class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-tally-blue focus:border-transparent"
+                            data-bind="userInput"
+                        >
+                        <button 
+                            id="sendBtn" 
+                            class="bg-tally-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                            data-event="click:sendMessage"
+                        >
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Typing Indicator -->
+                    <div id="typingIndicator" class="hidden flex items-center space-x-2 mt-2 text-gray-500">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        </div>
+                        <span class="text-sm">Assistant is typing...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- @END_COMPONENT: Main Content Area -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <i class="fas fa-calculator text-tally-orange text-xl"></i>
+                <span class="font-semibold text-lg">TallyPrime Assistant</span>
+            </div>
+            <p class="text-gray-400 text-sm">
+                Powered by AI • Built for TallyPrime Users • © 2024 All Rights Reserved
+            </p>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Configuration
+            const GEMINI_API_KEY = 'AIzaSyAQVNkYJ1FXPCf7PIqTQFjCasMRTWdgX84';
+            const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+            
+            // DOM Elements
+            const landingView = document.getElementById('landingView');
+            const chatView = document.getElementById('chatView');
+            const startChatBtn = document.getElementById('startChatBtn');
+            const closeChatBtn = document.getElementById('closeChatBtn');
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+            const sendBtn = document.getElementById('sendBtn');
+            const typingIndicator = document.getElementById('typingIndicator');
+
+            // Chat state
+            let isProcessing = false;
+
+            // Show chat interface
+            function showChatInterface() {
+                landingView.classList.add('hidden');
+                chatView.classList.remove('hidden');
+                chatInput.focus();
+            }
+
+            // Hide chat interface
+            function hideChatInterface() {
+                chatView.classList.add('hidden');
+                landingView.classList.remove('hidden');
+            }
+
+            // Add message to chat
+            function addMessage(content, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`;
+                
+                const avatarDiv = document.createElement('div');
+                avatarDiv.className = `w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${isUser ? 'bg-tally-blue' : 'bg-tally-orange'}`;
+                avatarDiv.innerHTML = `<i class="fas ${isUser ? 'fa-user' : 'fa-robot'} text-white text-sm"></i>`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = `rounded-lg p-3 shadow-sm max-w-xs lg:max-w-md ${isUser ? 'bg-tally-blue text-white' : 'bg-white text-gray-800'}`;
+                contentDiv.innerHTML = `<p>${content}</p>`;
+                
+                messageDiv.appendChild(avatarDiv);
+                messageDiv.appendChild(contentDiv);
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Show typing indicator
+            function showTypingIndicator() {
+                typingIndicator.classList.remove('hidden');
+            }
+
+            // Hide typing indicator
+            function hideTypingIndicator() {
+                typingIndicator.classList.add('hidden');
+            }
+
+            // Send message to Gemini API
+            async function sendToGemini(userMessage) {
+                try {
+                    const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [{
+                                    text: `You are TallyPrime Assistant, an expert in TallyPrime accounting software. Provide helpful, accurate information about TallyPrime features, troubleshooting, and best practices. Keep responses concise and user-friendly. User question: ${userMessage}`
+                                }]
+                            }]
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    return data.candidates[0].content.parts[0].text;
+                } catch (error) {
+                    console.error('Gemini API Error:', error);
+                    return 'I apologize, but I\'m experiencing technical difficulties. Please try again in a moment, or contact TallyPrime support for immediate assistance.';
+                }
+            }
+
+            // Handle sending messages
+            async function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message || isProcessing) return;
+
+                isProcessing = true;
+                sendBtn.disabled = true;
+                
+                // Add user message
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                try {
+                    // Get AI response
+                    const response = await sendToGemini(message);
+                    
+                    // Hide typing indicator and add AI response
+                    hideTypingIndicator();
+                    addMessage(response, false);
+                } catch (error) {
+                    hideTypingIndicator();
+                    addMessage('Sorry, I encountered an error. Please try again.', false);
+                }
+                
+                isProcessing = false;
+                sendBtn.disabled = false;
+                chatInput.focus();
+            }
+
+            // Event listeners
+            startChatBtn.addEventListener('click', showChatInterface);
+            closeChatBtn.addEventListener('click', hideChatInterface);
+            sendBtn.addEventListener('click', sendMessage);
+            
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Initialize
+            console.log('TallyPrime Assistant initialized');
+            // TODO: Implement user session management and message persistence
+            // TODO: Add advanced chat features like file uploads for TallyPrime data files
+            // TODO: Implement chat history export functionality
+        })();
+    </script>
+</body>
+</html>

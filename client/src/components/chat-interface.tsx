@@ -110,8 +110,8 @@ What would you like to know today?`,
   return (
     <>
       {/* Chat Preview Card */}
-      <div className="lg:sticky lg:top-8">
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-[800px] flex flex-col">
+      <div className="lg:sticky lg:top-16 z-9999 pt-[30px]">
+        <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-[650px] flex flex-col z-50">
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-300 px-6 py-4 bg-[#0f34a3] flex-shrink-0">
             <div className="flex items-center justify-between">
@@ -144,10 +144,23 @@ What would you like to know today?`,
 
             <div className="flex items-start space-x-3 justify-end group">
               <div className="bg-tally-blue text-white rounded-lg p-3 max-w-xs transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:border hover:border-blue-300 cursor-pointer">
-                <p className="text-sm">How do I create a sales voucher?</p>
+                <p className="text-sm">How do I enable GST in Tally Prime ?</p>
               </div>
             </div>
 
+            <div className="flex items-start space-x-3 group">
+              <div className="w-8 h-8 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:shadow-lg group-hover:scale-105">
+                <Bot className="h-4 w-4 text-white" />
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3 flex-1 transition-all duration-200 hover:bg-gray-100 hover:shadow-md hover:border hover:border-gray-200 cursor-pointer">
+                <p className="text-gray-700 text-sm">To enable GST in TallyPrime: Press F11 (Features) → Taxation → Select Enable Goods and Services Tax (GST) and choose Yes → Fill in the relevant information for your GST registration → Ctrl+A to Save. </p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-3 justify-end group">
+              <div className="bg-tally-blue text-white rounded-lg p-3 max-w-xs transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:border hover:border-blue-300 cursor-pointer">
+                <p className="text-sm">How do I create a sales voucher?</p>
+              </div>
+            </div>
             <div className="flex items-start space-x-3 group">
               <div className="w-8 h-8 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:shadow-lg group-hover:scale-105">
                 <Bot className="h-4 w-4 text-white" />
@@ -158,8 +171,10 @@ What would you like to know today?`,
             </div>
           </div>
 
+          
+
           {/* Start Chatting Button */}
-          <div className="p-6 border-t border-gray-100 flex-shrink-0">
+          <div className="p-6 border-t border-gray-100 flex-shrink-0 z-9999" >
             <Button 
               onClick={() => setIsOpen(true)}
               className="w-full bg-tally-orange hover:bg-tally-orange-hover text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg"
@@ -169,22 +184,23 @@ What would you like to know today?`,
               <Send className="h-4 w-4 ml-2" />
             </Button>
             <p className="text-center text-gray-500 text-sm mt-3">
-              Powered by Advanced AI • Free to use
+              Powered by Advent Systems • AI
             </p>
           </div>
         </div>
       </div>
       {/* Full Screen Chat Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-[9999] bg-white flex flex-col">
+        <div className="fixed inset-0 z-[9999999999999999] bg-white flex flex-col pt-0 md:pt-[40px]">
+
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center justify-center space-x-3">
               <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                 <Bot className="h-5 w-5 text-tally-blue" />
               </div>
               <div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <h3 className="text-white font-semibold text-lg">TallyPrime Assistant</h3>
                   <span className="text-white text-lg">✨</span>
                 </div>
