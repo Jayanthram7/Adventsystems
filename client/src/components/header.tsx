@@ -10,7 +10,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import logo from "@/components/tallylogo.png";
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
@@ -21,16 +20,24 @@ export default function Header() {
     phone: "",
     company: "",
     license: "",
-    issue: "",
+    email: "",      // NEW: optional email field
+    issue: "",      // Issue category (select)
+    details: "",    // Optional free-text details if you want to keep a note
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location, setLocation] = useLocation(); // get current route
 
-  const whatsappNumber = "919842276297"; 
-  const emailAddress = "adventsystems@gmail.com"; 
+  // Loading / anti-double-click state
+  const [isSubmitting, setIsSubmitting] = useState<"none" | "whatsapp" | "email">("none");
+
+  const whatsappNumber = "919842276297";
+  const emailAddress = "adventsystems@gmail.com";
 
   // Dynamic background based on route
-  const headerBg = location === "/learn" ? "bg-gradient-to-r from-green-700 via-green-700 to-green-600" : "bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600";
+  const headerBg =
+    location === "/learn"
+      ? "bg-gradient-to-r from-green-700 via-green-700 to-green-600"
+      : "bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600";
 
   const generateTokenNumber = () => {
     const now = new Date();
@@ -39,45 +46,52 @@ export default function Header() {
     return `${datePart}-${randomPart}`;
   };
 
-  const sendToBackend = async () => {
-    const now = new Date().toISOString();
-    const payload = {
+  // Build payload once, used by both WhatsApp and Email
+  const buildPayload = () => {
+    const now = new Date();
+    const isoNow = now.toISOString();
+    return {
       phoneNumber: formData.phone,
       callerName: formData.name,
       company: formData.company,
       serialNumber: formData.license,
-      callTime: now,
-      reason: formData.issue,
-      typeOfService: "",
+      callTime: isoNow,
+      reason: "", // per your latest payload structure
+      typeOfService: formData.issue, // selected issue category
       assignedTo: "",
       tokenNumber: generateTokenNumber(),
-      email: "",
+      email: formData.email || "",   // include optional email to backend
       statusOfCall: "Requested",
-      createdAt: now,
-      updatedAt: now,
+      createdAt: isoNow,
+      updatedAt: isoNow,
     };
+  };
 
-    try {
-      const res = await fetch(
-        "https://backend-copy-1.onrender.com/api/call-records",
-        {
+  // Fire-and-forget with simple retry/backoff
+  const backgroundPostToBackend = async (payload: any) => {
+    const url = "https://backend-copy-1.onrender.com/api/call-records";
+    const maxAttempts = 3;
+    let attempt = 0;
+    let delay = 500;
+
+    while (attempt < maxAttempts) {
+      try {
+        await fetch(url, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
+          keepalive: true,
+        });
+        return;
+      } catch (_err) {
+        attempt += 1;
+        if (attempt >= maxAttempts) {
+          console.error("Background post failed after retries");
+          return;
         }
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to send call record");
+        await new Promise((r) => setTimeout(r, delay));
+        delay *= 2;
       }
-
-      return await res.json();
-    } catch (error) {
-      console.error(error);
-      alert("Failed to send data to server");
-      return null;
     }
   };
 
@@ -85,7 +99,7 @@ export default function Header() {
     const { name, phone, company, license, issue } = formData;
 
     if (!name || !phone || !company || !license || !issue) {
-      alert("Please fill in all fields.");
+      alert("Please fill in all required fields.");
       return false;
     }
 
@@ -101,48 +115,117 @@ export default function Header() {
       return false;
     }
 
+    // Email is optional – if provided, do a basic format check
+    if (formData.email) {
+      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+      if (!ok) {
+        alert("Please enter a valid email address or leave it blank.");
+        return false;
+      }
+    }
+
     return true;
   };
 
-  const sendWhatsApp = async () => {
-    if (!validateForm()) return;
+  // Build a richer message including date/time and optional email
+  const buildSupportMessage = (tokenNumber: string) => {
+    const now = new Date();
+    const localTime = now.toLocaleString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    const isoTime = now.toISOString();
 
-    const backendResponse = await sendToBackend();
-    if (!backendResponse) return;
+    const lines = [
+      "*New Support Request*",
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      `Company: ${formData.company}`,
+      `License: ${formData.license}`,
+      `Issue: ${formData.issue}`,
+      formData.details ? `Details: ${formData.details}` : undefined,
+      formData.email ? `Email: ${formData.email}` : undefined,
+      `Token: ${tokenNumber}`,
+      `Date/Time (local): ${localTime}`,
+    ].filter(Boolean) as string[];
 
-    const heading = "*New Support Request*";
-    const message = `${encodeURIComponent(heading)}%0AName: ${encodeURIComponent(
-      formData.name
-    )}%0APhone: ${encodeURIComponent(formData.phone)}%0ACompany: ${encodeURIComponent(
-      formData.company
-    )}%0ALicense: ${encodeURIComponent(formData.license)}%0AIssue: ${encodeURIComponent(
-      formData.issue
-    )}`;
-
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+    return lines.join("\n");
   };
 
-  const sendEmail = async () => {
+  // Open WhatsApp first, then background post
+  const sendWhatsApp = async () => {
+    if (isSubmitting !== "none") return; // prevent double-clicks
     if (!validateForm()) return;
 
-    const backendResponse = await sendToBackend();
-    if (!backendResponse) return;
+    try {
+      setIsSubmitting("whatsapp");
 
-    const subject = encodeURIComponent("Support Request");
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nLicense: ${formData.license}\nIssue: ${formData.issue}`
-    );
+      const payload = buildPayload();
+      const message = buildSupportMessage(payload.tokenNumber);
 
-    window.open(
-      `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${subject}&body=${body}`,
-      "_blank"
-    );
+      // Open WhatsApp immediately
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+
+      // Background post (non-blocking)
+      backgroundPostToBackend(payload);
+
+      // Safety re-enable in case the dialog remains open and they come back
+      setTimeout(() => setIsSubmitting("none"), 4000);
+    } catch (e) {
+      setIsSubmitting("none");
+    }
+  };
+
+  // Open Gmail first, then background post
+  const sendEmail = async () => {
+    if (isSubmitting !== "none") return; // prevent double-clicks
+    if (!validateForm()) return;
+
+    try {
+      setIsSubmitting("email");
+
+      const payload = buildPayload();
+      const subject = `Support Request - ${payload.tokenNumber}`;
+      const body = buildSupportMessage(payload.tokenNumber);
+
+      // Open Gmail compose immediately
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+        emailAddress
+      )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, "_blank");
+
+      // Background post (non-blocking)
+      backgroundPostToBackend(payload);
+
+      // Safety re-enable
+      setTimeout(() => setIsSubmitting("none"), 4000);
+    } catch (e) {
+      setIsSubmitting("none");
+    }
   };
 
   const navItems = [
     { label: "About Us", href: "/about" },
     { label: "Services", href: "/products" },
     { label: "TallAi", href: "/" },
+  ];
+
+  // Options for Issue select
+  const issueOptions = [
+    "License",
+    "Data",
+    "Print/Share",
+    "E-Way Bill / E-Invoice",
+    "GST",
+    "AWS",
+    "Customization",
+    "NEW Pack",
+    "TSS",
   ];
 
   return (
@@ -204,7 +287,6 @@ export default function Header() {
 
           <div className="flex items-center space-x-4">
             <nav className="hidden lg:flex items-center space-x-6 text-white text-sm font-medium mr-4">
-            
               <a
                 href="/learn"
                 onClick={(e) => {
@@ -250,7 +332,10 @@ export default function Header() {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent
+                onOpenAutoFocus={() => setIsSubmitting("none")}
+                onCloseAutoFocus={() => setIsSubmitting("none")}
+              >
                 <DialogHeader>
                   <DialogTitle>Request Support</DialogTitle>
                   <DialogDescription>
@@ -282,36 +367,78 @@ export default function Header() {
                   onChange={(e) => setFormData({ ...formData, license: e.target.value })}
                   className="border border-gray-300 mb-1"
                 />
-                <Textarea
-                  placeholder="Describe the issue you are facing"
-                  value={formData.issue}
-                  onChange={(e) => setFormData({ ...formData, issue: e.target.value })}
+
+                {/* Optional Email */}
+                <Input
+                  placeholder="Email (optional)"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="border border-gray-300 mb-1"
                 />
 
-                <DialogFooter className="flex justify-between">
-                  <Button
-                    onClick={sendWhatsApp}
-                    className="bg-white border border-green-500 text-green-500 hover:bg-green-100 flex items-center gap-2"
+                {/* Issue category select */}
+                <div className="mb-1">
+                  <label className="block text-sm font-medium mb-1">Issue</label>
+                  <select
+                    value={formData.issue}
+                    onChange={(e) => setFormData({ ...formData, issue: e.target.value })}
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
                   >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                      alt="WhatsApp"
-                      className="w-6 h-6"
-                    />
-                    WhatsApp
-                  </Button>
+                    <option value="" disabled>
+                      Select an issue
+                    </option>
+                    {issueOptions.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Optional details textarea (keep if you want extra info) */}
+                <textarea
+                  placeholder="Additional details (optional)"
+                  value={formData.details}
+                  onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                  className="border border-gray-300 mb-1 rounded-md px-3 py-2 text-sm w-full min-h-[90px]"
+                />
+
+                <DialogFooter className="flex justify-between">
+                  
 
                   <Button
                     onClick={sendEmail}
-                    className="bg-white border border-red-400 text-red-400 hover:bg-red-100 flex items-center gap-2"
+                    disabled={isSubmitting !== "none"}
+                    className={`${
+                      isSubmitting === "email" ? "opacity-80 cursor-not-allowed" : ""
+                    } bg-white border border-red-400 text-red-400 hover:bg-red-100 flex items-center gap-2`}
                   >
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1024px-Gmail_icon_%282020%29.svg.png"
                       alt="Gmail"
                       className="w-6 h-5"
                     />
-                    Gmail
+                    {isSubmitting === "email" ? "Opening Gmail…" : "Gmail"}
+                    {isSubmitting === "email" && (
+                      <span className="ml-2 inline-block animate-pulse">• • •</span>
+                    )}
+                  </Button>
+                  <Button
+                    onClick={sendWhatsApp}
+                    disabled={isSubmitting !== "none"}
+                    className={`${
+                      isSubmitting === "whatsapp" ? "opacity-80 cursor-not-allowed" : ""
+                    } bg-white border border-green-500 text-green-500 hover:bg-green-100 flex items-center gap-2`}
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                      alt="WhatsApp"
+                      className="w-6 h-6"
+                    />
+                    {isSubmitting === "whatsapp" ? "Opening WhatsApp…" : "WhatsApp"}
+                    {isSubmitting === "whatsapp" && (
+                      <span className="ml-2 inline-block animate-pulse">• • •</span>
+                    )}
                   </Button>
                 </DialogFooter>
               </DialogContent>
