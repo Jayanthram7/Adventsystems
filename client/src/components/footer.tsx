@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
               <div className={`py-1 rounded mr-3 `}>
-                <span className="text-tally-blue font-bold bg-transparent text-3xl italic">Advent Systems </span>
+                <span className="text-tally-blue font-bold bg-transparent text-3xl ">Advent Systems </span>
               </div>
             </div>
             <p className="text-white mb-6 leading-relaxed">
@@ -28,7 +28,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a
-                href="https://wa.me/919965576297?text=Hello%20Advent%20Systems"
+                href="https://wa.me/919842276297?text=Hello%20Advent%20Systems"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 p-3 rounded-full transition-all duration-200 hover:scale-110"

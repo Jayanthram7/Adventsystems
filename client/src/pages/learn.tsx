@@ -12,7 +12,7 @@ export default function TallyLearn() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [formVisible, setFormVisible] = useState(false);
 
-  const whatsappNumber = "9965576297";
+  const whatsappNumber = "9842276297";
 
   const validateForm = () => {
     if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {

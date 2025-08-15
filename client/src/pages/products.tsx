@@ -115,7 +115,7 @@ export default function Products() {
       return;
     }
 
-    const phoneNumber = "919965576297"; // your WhatsApp number in international format
+    const phoneNumber = "919842276297"; // your WhatsApp number in international format
     const message = `*New Support Request*\nName: ${formData.name}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nLicense: ${formData.license || "N/A"}\nIssue: ${formData.issue}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");

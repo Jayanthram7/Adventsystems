@@ -26,8 +26,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location, setLocation] = useLocation(); // get current route
 
-  const whatsappNumber = "919965576297"; 
-  const emailAddress = "jayanthramnithin@gmail.com"; 
+  const whatsappNumber = "919842276297"; 
+  const emailAddress = "adventsystems@gmail.com"; 
 
   // Dynamic background based on route
   const headerBg = location === "/learn" ? "bg-gradient-to-r from-green-700 via-green-700 to-green-600" : "bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600";
@@ -321,7 +321,7 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <nav className="lg:hidden bg-tally-blue px-4 pb-4 absolute top-full left-0 w-full shadow-md z-50">
+        <nav className="lg:hidden bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 px-4 pb-4 absolute top-full left-0 w-full shadow-md z-50">
           <ul className="flex flex-col space-y-2 text-white font-medium">
             {navItems.map(({ label, href }) => (
               <li key={label}>

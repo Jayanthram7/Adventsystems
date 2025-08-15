@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { X, Send, MessageCircle, Bot, User, Search, ChevronDown, ChevronUp } from "lucide-react";
+import { X, Send, MessageCircle, Bot, User, Search, ChevronDown } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -60,6 +60,18 @@ What would you like to know today?`,
         timestamp: new Date(),
       };
       setMessages([welcomeMessage]);
+    }
+  }, [isOpen, messages.length]);
+
+  // Lock background scroll when open on mobile (<= 639px)
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches;
+    if (isOpen && isMobile) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
     }
   }, [isOpen]);
 
@@ -150,34 +162,38 @@ What would you like to know today?`,
 
         {/* Minimized button (shown when minimized) */}
         {isMinimized && (
-      <button
-        aria-label="Open Chat"
-        onClick={handleOpenFromMinimized}
-        className="relative group px-4 h-14 rounded-full bg-tally-blue shadow-lg flex items-center justify-center gap-2 ring-1 ring-black/5 hover:scale-105 transform transition"
-        title="Chat with us"
-      >
-        <MessageCircle className="w-6 h-6 text-white" />
+          <button
+            aria-label="Open Chat"
+            onClick={handleOpenFromMinimized}
+            className="relative group px-4 h-14 rounded-full bg-tally-blue shadow-lg flex items-center justify-center gap-2 ring-1 ring-black/5 hover:scale-105 transform transition"
+            title="Chat with us"
+          >
+            <MessageCircle className="w-6 h-6 text-white" />
 
-        <div className="flex items-center gap-2">
-          <span className="text-white font-medium">Tally Assistant</span>
-          <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
-            NEW
-          </span>
-        </div>
+            <div className="flex items-center gap-2">
+              <span className="text-white font-medium">Tally Assistant</span>
+              <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
+                NEW
+              </span>
+            </div>
 
-        {unread > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center shadow">
-            {unread > 9 ? "9+" : unread}
-          </span>
-        )}
-      </button>
-
-
+            {unread > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center shadow">
+                {unread > 9 ? "9+" : unread}
+              </span>
+            )}
+          </button>
         )}
 
         {/* Expanded chat panel */}
         {isOpen && (
-          <div className="w-[340px] md:w-[420px] max-h-[85vh] flex flex-col rounded-xl shadow-2xl bg-white overflow-hidden">
+          <div
+            className="
+              w-[340px] md:w-[420px] max-h-[85vh] flex flex-col rounded-xl shadow-2xl bg-white overflow-hidden
+              md:fixed md:bottom-6 md:right-6
+              mobile-chat-panel
+            "
+          >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#0f34a3]">
               <div className="flex items-center space-x-3">
@@ -230,7 +246,6 @@ What would you like to know today?`,
                       rounded-lg p-3 max-w-[78%] transition-all duration-200 hover:shadow-lg
                     `}
                   >
-
                     <div
                       className="whitespace-pre-line text-sm"
                       dangerouslySetInnerHTML={{
@@ -267,7 +282,7 @@ What would you like to know today?`,
             </div>
 
             {/* Input */}
-            <div className="border-t border-gray-100 p-3 bg-white">
+            <div className="border-t border-gray-100 p-3 bg-white safe-bottom">
               <div className="flex items-center gap-3">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-tally-blue h-4 w-4" />
