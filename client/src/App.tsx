@@ -10,6 +10,7 @@ import Products from "@/pages/products"
 import Chatbot from "@/components/chatbot"
 import { useLocation } from "wouter";
 import Learn from "@/pages/learn";
+import Career from "@/pages/career";
 function Router() {
   return (
     
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/products" component={Products} />
       <Route path="/learn" component={Learn} />
+      <Route path="/career" component={Career} />
       <Route component={NotFound} />
     </Switch>
   );

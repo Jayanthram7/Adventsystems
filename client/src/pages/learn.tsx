@@ -1,18 +1,32 @@
 import { useEffect, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import TallyEssentials from "./TallyEssentials.png";
+import TallyProfessional from "./TallyProfessional.png";
+import TallyCertification from "./TallyCertification.png";
+import TallyGST from "./TallyGST.png";
+import TallyOffice from "./OfficeAutomation.png";
+import TallyPayroll from "./Payroll.png";
 
 export default function TallyLearn() {
-  const [formData, setFormData] = useState({ name: "", phone: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [formVisible, setFormVisible] = useState(false);
 
   const whatsappNumber = "9965576297";
 
   const validateForm = () => {
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      alert("Please fill in both Name and Phone.");
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
+      alert("Please fill in Name, Email, and Phone.");
       return false;
     }
+
+    // Basic email pattern
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim());
+    if (!emailOk) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
     const phoneDigits = formData.phone.replace(/\D/g, "");
     if (phoneDigits.length !== 10) {
       alert("Phone number must be exactly 10 digits.");
@@ -24,11 +38,14 @@ export default function TallyLearn() {
   const sendWhatsApp = () => {
     if (!validateForm()) return;
     const heading = `*Tally Learn*`; // bold with asterisks
-    const message = `${encodeURIComponent(heading)}%0AName: ${encodeURIComponent(formData.name)}%0APhone: ${encodeURIComponent(formData.phone)}`;
+    const message =
+      `${encodeURIComponent(heading)}%0A` +
+      `Name: ${encodeURIComponent(formData.name)}%0A` +
+      `Email: ${encodeURIComponent(formData.email)}%0A` +
+      `Phone: ${encodeURIComponent(formData.phone)}`;
     const url = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(url, "_blank");
   };
-
 
   // Disable body scroll when modal open
   useEffect(() => {
@@ -43,7 +60,7 @@ export default function TallyLearn() {
   }, [formVisible]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-blue-100 pt-[40px] flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white via-green-50 to-green-100 pt-[40px] flex flex-col relative overflow-hidden">
       {/* Background SVG Decorations */}
       <BackgroundSVGs />
 
@@ -53,8 +70,8 @@ export default function TallyLearn() {
         {/* Hero Section */}
         <section className="text-center mb-16">
           <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight mb-5">
-            <span className="text-blue-800">Tally</span>{" "}
-            <span className="text-tally-blue drop-shadow-sm">Learn</span>
+            <span className="text-tally-gray drop-shadow-sm">Learn</span>{" "}
+            <span className="text-green-600">Tally.</span>
           </h1>
           <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-700 leading-relaxed">
             Empower business skills with Tally Learn — master accounting, inventory, and compliance with
@@ -73,7 +90,7 @@ export default function TallyLearn() {
             </button>
             <a
               href="#modules"
-              className="inline-flex items-center gap-2 bg-white text-blue-800 hover:text-white hover:bg-blue-800 border border-blue-200 font-semibold rounded-full px-8 py-3 shadow-sm transition duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200"
+              className="inline-flex items-center gap-2 bg-white text-green-600 hover:text-white hover:bg-green-600 border border-green-200 font-semibold rounded-full px-8 py-3 shadow-sm transition duration-300 focus:outline-none focus:ring-4 focus:ring-green-200"
             >
               Explore Modules
             </a>
@@ -81,39 +98,68 @@ export default function TallyLearn() {
         </section>
 
         {/* Featured Images / Modules */}
-        <section id="modules" className="mt-6">
+        <section id="modules" className="mt-6 ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Use high-quality dummy images */}
             {[
-              { title: "Accounting Basics" },
-              { title: "Inventory Management", img: "https://picsum.photos/seed/tally2/600/380" },
-              { title: "GST & Compliance", img: "https://picsum.photos/seed/tally3/600/380" },
-              { title: "Payroll Setup", img: "https://picsum.photos/seed/tally4/600/380" },
-              { title: "Reporting & Analytics", img: "https://picsum.photos/seed/tally5/600/380" },
-              { title: "Advanced Vouchers", img: "https://picsum.photos/seed/tally6/600/380" },
+              {
+                title: "Tally Essentials",
+                img: TallyEssentials,
+                description: "Learn the fundamentals of Tally with structured lessons and exercises.",
+              },
+              {
+                title: "Tally Professional",
+                img: TallyProfessional,
+                description: "A Complete Guide on Advanced Business Accounting and Indian Taxation.",
+              },
+              {
+                title: "Tally Certification with Online Internship",
+                img: TallyCertification,
+                description: "Get hands-on Accounting experience with Tally’s NEP-aligned Online Internship",
+              },
+              {
+                title: "Tally Certification with GST Simulation",
+                img: TallyGST,
+                description: "A Dynamic Platform for Practising GST Returns with Tally Certification to Level Up Your Career",
+              },
+              {
+                title: "Office Automation",
+                img: TallyOffice,
+                description: "Gain essential skills in Basic Computing, MS Word, Excel & PowerPoint.",
+              },
+              {
+                title: "Complete Guide to Payroll & Income Tax",
+                img: TallyPayroll,
+                description: "Manage payroll & taxes with TallyPrime - process salaries & ensure compliance.",
+              },
             ].map((card, idx) => (
               <article
                 key={idx}
-                className="group relative overflow-hidden rounded-2xl bg-white border shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl bg-white border shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                
+                {/* Image */}
+                {card.img && (
+                  <img
+                    src={card.img}
+                    alt={card.title}
+                    className="w-full h- object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+
                 <div className="p-5">
                   <h3 className="text-xl font-bold text-gray-900">{card.title}</h3>
                   <p className="mt-2 text-gray-600 text-sm">
-                    Structured lessons, exercises, and practical workflows to build proficiency.
+                    {card.description}
                   </p>
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-blue-700 font-semibold">Beginner–Advanced</span>
+                    <span className="text-green-700 font-semibold">Beginner–Advanced</span>
                     <button
                       onClick={() => setFormVisible(true)}
-                      className="text-tally-blue hover:text-blue-800 font-semibold"
+                      className="text-green-600 hover:text-green-700 font-semibold"
                     >
                       Enroll →
                     </button>
                   </div>
                 </div>
-                {/* Subtle top gradient accent */}
-                
               </article>
             ))}
           </div>
@@ -121,18 +167,18 @@ export default function TallyLearn() {
 
         {/* CTA Banner */}
         <section className="mt-16">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white p-8 sm:p-12 shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-green-800 via-green-700 to-green-600 text-white p-8 sm:p-12 shadow-2xl">
             <div className="relative z-10 max-w-3xl">
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
                 Learn faster with curated Tally pathways
               </h2>
-              <p className="mt-3 text-blue-100">
+              <p className="mt-3 text-green-100">
                 Bite-sized modules, step-by-step projects, and hands-on exercises designed for busy professionals.
               </p>
               <div className="mt-6">
                 <button
                   onClick={() => setFormVisible(true)}
-                  className="inline-flex items-center gap-2 bg-white text-blue-800 hover:bg-blue-50 font-semibold rounded-full px-6 py-3 shadow-md transition duration-300 focus:outline-none focus:ring-4 focus:ring-white/40"
+                  className="inline-flex items-center gap-2 bg-white text-green-600 hover:bg-green-50 font-semibold rounded-full px-6 py-3 shadow-md transition duration-300 focus:outline-none focus:ring-4 focus:ring-white/40"
                 >
                   Start Registration
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 opacity-90" viewBox="0 0 20 20" fill="currentColor">
@@ -141,7 +187,6 @@ export default function TallyLearn() {
                 </button>
               </div>
             </div>
-            
           </div>
         </section>
       </main>
@@ -157,8 +202,15 @@ export default function TallyLearn() {
               placeholder="Full Name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-tally-blue transition"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600 transition"
               autoFocus
+            />
+            <input
+              type="email"
+              placeholder="Email (e.g., yourname@gmail.com)"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600 transition"
             />
             <input
               type="tel"
@@ -166,11 +218,11 @@ export default function TallyLearn() {
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               maxLength={10}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-tally-blue transition"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600 transition"
             />
             <button
               onClick={sendWhatsApp}
-              className="w-full bg-tally-blue hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300"
             >
               Submit
             </button>
@@ -216,13 +268,13 @@ function Modal({
       />
       {/* Dialog */}
       <div className="relative z-10 w-full max-w-md">
-        <div className="animate-slideUp rounded-2xl bg-white shadow-2xl border border-blue-100">
+        <div className="animate-slideUp rounded-2xl bg-white shadow-2xl border border-green-100">
           <div className="flex items-center justify-between px-6 py-4 border-b">
             <h3 className="text-lg font-bold text-gray-900">{title}</h3>
             <button
               onClick={onClose}
               aria-label="Close"
-              className="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-200"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -247,7 +299,7 @@ function BackgroundSVGs() {
       {/* Grid mesh */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute -top-24 -right-24 w-[700px] opacity-20 text-blue-300"
+        className="pointer-events-none absolute -top-24 -right-24 w-[700px] opacity-20 text-green-300"
         viewBox="0 0 600 600"
         fill="none"
       >
@@ -259,13 +311,10 @@ function BackgroundSVGs() {
         <rect width="600" height="600" fill="url(#grid)" />
       </svg>
 
-      {/* Blurred blob left */}
-      
-
       {/* Subtle dots */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute top-40 left-6 w-40 opacity-30 text-blue-300"
+        className="pointer-events-none absolute top-40 left-6 w-40 opacity-30 text-green-300"
         viewBox="0 0 100 100"
         fill="currentColor"
       >

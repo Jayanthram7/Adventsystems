@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   ChevronRight,
   Sparkles,
+  Brain
 } from "lucide-react";
 
 type FormData = {
@@ -23,6 +24,22 @@ type FormData = {
 
 function classNames(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
+}
+function HoloIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="relative inline-grid place-items-center size-12 rounded-2xl bg-white">
+      {/* holographic glow */}
+      <span className="absolute -inset-1 rounded-3xl bg-[conic-gradient(at_30%_30%,#60a5fa, #22d3ee, #a78bfa, #f472b6, #60a5fa)] opacity-30 blur-md" />
+      {/* inner soft gradient */}
+      <span className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-600/10 via-cyan-500/10 to-fuchsia-500/10" />
+      {/* subtle ring */}
+      <span className="absolute inset-0 rounded-2xl ring-2 ring-white/70 shadow-[inset_0_0_0_1px_rgba(59,130,246,.25)]" />
+      {/* content */}
+      <span className="relative text-blue-600">
+        {children}
+      </span>
+    </span>
+  );
 }
 
 function ProductCard({
@@ -163,7 +180,7 @@ export default function Products() {
                 Solutions offered by us for TallyPrime
               </div>
               <h1 className="mx-auto mt-6 max-w-3xl text-[clamp(2rem,4vw,3.25rem)] font-extrabold leading-tight text-gray-900">
-                Our <span className="text-blue-700">Products</span>
+                Our <span className="text-blue-700">Services</span>
               </h1>
               <p className="mx-auto mt-3 max-w-2xl text-lg text-gray-600">
                 Discover AI-powered tools designed to streamline and supercharge daily work in TallyPrime.
@@ -181,7 +198,7 @@ export default function Products() {
                   href="#products"
                   className="rounded-lg border border-gray-300 bg-white px-5 py-3 text-gray-900 transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
                 >
-                  Explore Products
+                  Explore Services
                 </a>
               </div>
             </div>
@@ -207,6 +224,16 @@ export default function Products() {
       <section id="products" className="py-6 sm:py-6">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ProductCard
+  icon={() => (
+    <HoloIcon>
+      <Brain className="w-5 h-5" />
+    </HoloIcon>
+  )}
+  title="AI Assist for TallyPrime"
+  description="A custom AI assistant for TallyPrime to help you with your business needs."
+  accent="blue"
+/>
             <ProductCard
               icon={CloudCog}
               title="Sales & Support for Tally Products"
@@ -237,17 +264,8 @@ export default function Products() {
               description="Seamless connectors for WhatsApp, Excel templates, dashboards, and more."
               accent="blue"
             />
-            <div className="relative rounded-2xl border border-dashed border-blue-200 bg-gradient-to-br from-blue-50 to-white p-6 text-center">
-              <p className="text-sm font-medium uppercase tracking-wide text-blue-700">
-                Coming Soon
-              </p>
-              <h3 className="mt-2 text-xl font-semibold text-gray-900">
-                AI Assist for TallyPrime
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Intelligent suggestions, anomaly detection, and natural-language insights.
-              </p>
-            </div>
+            
+            
           </div>
         </div>
       </section>
@@ -257,7 +275,7 @@ export default function Products() {
         <div className="mx-auto max-w-5xl px-6 text-center">
           <div className="rounded-3xl border border-gray-100 bg-white p-10 shadow-sm">
             <h2 className="text-3xl font-bold text-gray-900">
-              Ready to boost productivity with Tally?
+              Ready to boost productivity with Tally Prime?
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-lg text-gray-600">
               Contact us Now to avail our solutions and power your business with TallyPrime.
@@ -269,12 +287,7 @@ export default function Products() {
               >
                 Contact Us
               </button>
-              <a
-                href="#products"
-                className="rounded-lg border border-gray-300 bg-white px-6 py-3 text-gray-900 transition hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
-              >
-                View Products
-              </a>
+              
             </div>
           </div>
         </div>

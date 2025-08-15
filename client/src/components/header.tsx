@@ -12,9 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import logo from "@/components/tallylogo.png";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { useLocation } from "wouter";
 
 export default function Header() {
   const [formData, setFormData] = useState({
@@ -25,10 +24,13 @@ export default function Header() {
     issue: "",
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation(); // get current route
 
-  const whatsappNumber = "919965576297"; // Change to your WhatsApp number
-  const emailAddress = "jayanthramnithin@gmail.com"; // Change to your email
+  const whatsappNumber = "919965576297"; 
+  const emailAddress = "jayanthramnithin@gmail.com"; 
+
+  // Dynamic background based on route
+  const headerBg = location === "/learn" ? "bg-gradient-to-r from-green-700 via-green-700 to-green-600" : "bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600";
 
   const generateTokenNumber = () => {
     const now = new Date();
@@ -56,13 +58,16 @@ export default function Header() {
     };
 
     try {
-      const res = await fetch("https://backend-copy-1.onrender.com/api/call-records", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        "https://backend-copy-1.onrender.com/api/call-records",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to send call record");
@@ -76,7 +81,6 @@ export default function Header() {
     }
   };
 
-  // Validation helper
   const validateForm = () => {
     const { name, phone, company, license, issue } = formData;
 
@@ -85,7 +89,7 @@ export default function Header() {
       return false;
     }
 
-    const phoneDigits = phone.replace(/\D/g, ""); // Remove non-digits
+    const phoneDigits = phone.replace(/\D/g, "");
     if (phoneDigits.length !== 10) {
       alert("Phone number must be exactly 10 digits.");
       return false;
@@ -107,11 +111,16 @@ export default function Header() {
     if (!backendResponse) return;
 
     const heading = "*New Support Request*";
-    const message = `${encodeURIComponent(heading)}%0AName: ${encodeURIComponent(formData.name)}%0APhone: ${encodeURIComponent(formData.phone)}%0ACompany: ${encodeURIComponent(formData.company)}%0ALicense: ${encodeURIComponent(formData.license)}%0AIssue: ${encodeURIComponent(formData.issue)}`;
+    const message = `${encodeURIComponent(heading)}%0AName: ${encodeURIComponent(
+      formData.name
+    )}%0APhone: ${encodeURIComponent(formData.phone)}%0ACompany: ${encodeURIComponent(
+      formData.company
+    )}%0ALicense: ${encodeURIComponent(formData.license)}%0AIssue: ${encodeURIComponent(
+      formData.issue
+    )}`;
 
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
-
 
   const sendEmail = async () => {
     if (!validateForm()) return;
@@ -132,18 +141,15 @@ export default function Header() {
 
   const navItems = [
     { label: "About Us", href: "/about" },
-    { label: "Products", href: "/products" },
+    { label: "Services", href: "/products" },
     { label: "TallAi", href: "/" },
   ];
 
   return (
-    <header className="bg-tally-blue shadow-sm fixed top-0 left-0 w-full z-50">
+    <header className={`${headerBg} shadow-sm fixed top-0 left-0 w-full z-50`}>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Three-part flex container */}
         <div className="flex items-center justify-between py-2 relative">
-          {/* LEFT: Hamburger + Advent text + main nav */}
           <div className="flex items-center space-x-4">
-            {/* Hamburger menu for mobile */}
             <button
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               className="lg:hidden p-2 text-white hover:text-tally-orange focus:outline-none focus:ring-2 focus:ring-tally-orange rounded"
@@ -152,19 +158,16 @@ export default function Header() {
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
-            {/* Advent Logo - hidden on mobile */}
             <img
               src="https://img1.wsimg.com/isteam/ip/fa4c5394-6dd8-4339-9ac8-0be7e0232d41/ADV-30-New.png/:/cr=t:3.83%25,l:0%25,w:100%25,h:92.34%25/rs=w:984,h:740"
               alt="Advent Logo"
               className="hidden lg:block w-10 h-10 rounded-full object-cover"
             />
 
-            {/* Advent Systems Text - always visible */}
             <span className="font-sans text-xl font-semibold tracking-wide text-white drop-shadow-md select-none z-50">
               Advent Systems
             </span>
 
-            {/* Nav Links - desktop only */}
             <nav className="hidden lg:flex items-center space-x-6 text-white text-sm font-medium">
               {navItems.map(({ label, href }) => (
                 <Link key={label} href={href} scroll={true}>
@@ -182,30 +185,26 @@ export default function Header() {
                 </Link>
               ))}
               <a
-                href="#"
+                href="/learn"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.scrollBy({ top: 2600, behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setTimeout(() => setLocation("/career"), 300);
                 }}
-                className="relative hover:text-tally-orange transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                className="text-white hover:text-tally-orange transition-colors duration-300 font-medium"
               >
-                Contact
+                Careers
               </a>
             </nav>
           </div>
 
-          {/* CENTER: TallyPrime Logo */}
           <div className="hidden lg:flex items-center justify-center flex-grow">
-            <img
-              src={logo}
-              alt="TallyPrime Logo"
-              className="w-18 h-8"
-            />
+            <img src={logo} alt="TallyPrime Logo" className="w-18 h-8" />
           </div>
 
-          {/* RIGHT: TallyPrime & TallyHelp links + Request Support */}
           <div className="flex items-center space-x-4">
             <nav className="hidden lg:flex items-center space-x-6 text-white text-sm font-medium mr-4">
+            
               <a
                 href="/learn"
                 onClick={(e) => {
@@ -221,7 +220,7 @@ export default function Header() {
                 href="https://tallysolutions.com/tally-prime/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-tally-orange transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full relative"
+                className="hover:text-tally-orange transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
               >
                 TallyPrime
               </a>
@@ -229,7 +228,7 @@ export default function Header() {
                 href="https://help.tallysolutions.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-tally-orange transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full relative"
+                className="hover:text-tally-orange transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
               >
                 TallyHelp
               </a>
@@ -237,7 +236,7 @@ export default function Header() {
                 href="https://tallysolutions.com/tally-prime/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-tally-orange transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full relative"
+                className="hover:text-tally-orange transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
               >
                 TallyBlog
               </a>
@@ -245,25 +244,9 @@ export default function Header() {
 
             <Dialog>
               <DialogTrigger asChild>
-                <Button
-                  className="
-                    bg-tally-orange 
-                    hover:bg-tally-orange-hover 
-                    text-tally-blue 
-                    flex items-center gap-2 px-4 py-2 
-                    rounded-lg shadow-md 
-                    transition 
-                    duration-300 
-                    ease-in-out
-                    hover:shadow-lg
-                    hover:scale-105
-                    focus:outline-none
-                    focus:ring-tally-orange
-                    focus:ring-offset-1
-                  "
-                >
+                <Button className="bg-tally-orange hover:bg-tally-orange-hover text-tally-blue flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-tally-orange focus:ring-offset-1">
                   <Headset className="h-4 w-4" />
-                  Request Support
+                  Support Request
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </DialogTrigger>
@@ -314,7 +297,7 @@ export default function Header() {
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
                       alt="WhatsApp"
-                      className="w-6 h-6 "
+                      className="w-6 h-6"
                     />
                     WhatsApp
                   </Button>
@@ -337,7 +320,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
         <nav className="lg:hidden bg-tally-blue px-4 pb-4 absolute top-full left-0 w-full shadow-md z-50">
           <ul className="flex flex-col space-y-2 text-white font-medium">
@@ -362,7 +344,6 @@ export default function Header() {
               </li>
             ))}
 
-            {/* Added links below for mobile menu */}
             <li>
               <a
                 href="/learn"
