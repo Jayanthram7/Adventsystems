@@ -92,7 +92,7 @@ export default function Careers() {
 
           <h1 className="mt-6 text-5xl md:text-7xl font-extrabold leading-tight text-tally-gray">
             Build a Meaningful Career at{" "}
-            <span className="text-tally-orange drop-shadow-sm">Advent Systems</span>
+            <span className="text-blue-700 drop-shadow-sm">Advent Systems</span>
           </h1>
 
           <p className="mt-5 max-w-3xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed">

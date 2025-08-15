@@ -16,8 +16,8 @@ function Router() {
     
     <Switch>
       
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route path="/ai" component={Home} />
+      <Route path="/" component={About} />
       <Route path="/products" component={Products} />
       <Route path="/learn" component={Learn} />
       <Route path="/career" component={Career} />
@@ -33,7 +33,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        {location !== "/" && <Chatbot />}
+        {location !== "/ai" && <Chatbot />}
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

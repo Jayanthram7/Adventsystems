@@ -210,9 +210,9 @@ export default function Header() {
   };
 
   const navItems = [
-    { label: "About Us", href: "/about" },
+    { label: "About Us", href: "/" },
     { label: "Services", href: "/products" },
-    { label: "TallAi", href: "/" },
+    { label: "TallAi", href: "/ai" },
   ];
 
   // Options for Issue select
