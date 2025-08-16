@@ -1,4 +1,4 @@
-import { Search, Globe, ArrowRight, Headset, Menu, X } from "lucide-react";
+import { Search, Globe, ArrowRight, Headset, Menu, X , User , Phone , Mail , Building2 , IdCard , HelpCircle} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -315,7 +315,7 @@ export default function Header() {
                 TallyHelp
               </a>
               <a
-                href="https://tallysolutions.com/tally-prime/"
+                href="https://tallysolutions.com/blogs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-tally-orange transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -325,124 +325,225 @@ export default function Header() {
             </nav>
 
             <Dialog>
-              <DialogTrigger asChild>
-                <Button className="bg-tally-orange hover:bg-tally-orange-hover text-tally-blue flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-tally-orange focus:ring-offset-1">
-                  <Headset className="h-4 w-4" />
-                  Support Request
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent
-                onOpenAutoFocus={() => setIsSubmitting("none")}
-                onCloseAutoFocus={() => setIsSubmitting("none")}
-              >
-                <DialogHeader>
-                  <DialogTitle>Request Support</DialogTitle>
-                  <DialogDescription>
-                    Please fill in your details and choose a way to contact us.
-                  </DialogDescription>
-                </DialogHeader>
+  <DialogTrigger asChild>
+    <Button
+      className="bg-tally-orange hover:bg-tally-orange-hover text-tally-blue flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-tally-orange"
+      title="Open support request form"
+    >
+      <Headset className="h-4 w-4" />
+      Support Request
+      <ArrowRight className="h-4 w-4" />
+    </Button>
+  </DialogTrigger>
 
-                <Input
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="border border-gray-300 mb-1"
-                />
-                <Input
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="border border-gray-300 mb-1"
-                />
-                <Input
-                  placeholder="Company Name"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="border border-gray-300 mb-1"
-                />
-                <Input
-                  placeholder="License Number"
-                  value={formData.license}
-                  onChange={(e) => setFormData({ ...formData, license: e.target.value })}
-                  className="border border-gray-300 mb-1"
-                />
+  <DialogContent
+    className="sm:max-w-[520px] w-[92vw] rounded-2xl"
+    onOpenAutoFocus={() => setIsSubmitting("none")}
+    onCloseAutoFocus={() => setIsSubmitting("none")}
+  >
+    <DialogHeader className="space-y-1">
+      <DialogTitle className="text-xl font-bold">Request Support</DialogTitle>
+      <DialogDescription className="text-sm text-gray-600">
+        Please sign in to WhatsApp or Gmail on this device before submitting your request.
+      </DialogDescription>
+    </DialogHeader>
 
-                {/* Optional Email */}
-                <Input
-                  placeholder="Email (optional)"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="border border-gray-300 mb-1"
-                />
+    {/* Form */}
+    <div className="mt-3 space-y-3">
+      {/* Name */}
+      <div>
+        <label className="block text-sm font-medium text-gray-800 mb-1">
+          Name <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <User className="h-4 w-4" />
+          </span>
+          <Input
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="pl-9 border-gray-300 focus-visible:ring-2 focus-visible:ring-tally-orange"
+          />
+        </div>
+      </div>
 
-                {/* Issue category select */}
-                <div className="mb-1">
-                  <label className="block text-sm font-medium mb-1">Issue</label>
-                  <select
-                    value={formData.issue}
-                    onChange={(e) => setFormData({ ...formData, issue: e.target.value })}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
-                  >
-                    <option value="" disabled>
-                      Select an issue
-                    </option>
-                    {issueOptions.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+      {/* Phone + Email (optional) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className="block text-sm font-medium text-gray-800 mb-1">
+            Phone Number <span className="text-red-500">*</span>
+          </label>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <Phone className="h-4 w-4" />
+            </span>
+            <Input
+              placeholder="e.g., 9876543210"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              className="pl-9 border-gray-300 focus-visible:ring-2 focus-visible:ring-tally-orange"
+              inputMode="tel"
+              maxLength={10}
+            />
+          </div>
+          <p className="mt-1 text-xs text-gray-500">10-digit mobile number</p>
+        </div>
 
-                {/* Optional details textarea (keep if you want extra info) */}
-                <textarea
-                  placeholder="Additional details (optional)"
-                  value={formData.details}
-                  onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                  className="border border-gray-300 mb-1 rounded-md px-3 py-2 text-sm w-full min-h-[90px]"
-                />
+        <div>
+          <label className="block text-sm font-medium text-gray-800 mb-1">
+            Email (optional)
+          </label>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <Mail className="h-4 w-4" />
+            </span>
+            <Input
+              placeholder="name@gmail.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="pl-9 border-gray-300 focus-visible:ring-2 focus-visible:ring-tally-orange"
+              inputMode="email"
+            />
+          </div>
+        </div>
+      </div>
 
-                <DialogFooter className="flex justify-between">
-                  
+      {/* Company + License */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label className="block text-sm font-medium text-gray-800 mb-1">
+            Company Name
+          </label>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <Building2 className="h-4 w-4" />
+            </span>
+            <Input
+              placeholder="Your Company"
+              value={formData.company}
+              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+              className="pl-9 border-gray-300 focus-visible:ring-2 focus-visible:ring-tally-orange"
+            />
+          </div>
+        </div>
 
-                  <Button
-                    onClick={sendEmail}
-                    disabled={isSubmitting !== "none"}
-                    className={`${
-                      isSubmitting === "email" ? "opacity-80 cursor-not-allowed" : ""
-                    } bg-white border border-red-400 text-red-400 hover:bg-red-100 flex items-center gap-2`}
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1024px-Gmail_icon_%282020%29.svg.png"
-                      alt="Gmail"
-                      className="w-6 h-5"
-                    />
-                    {isSubmitting === "email" ? "Opening Gmail…" : "Gmail"}
-                    {isSubmitting === "email" && (
-                      <span className="ml-2 inline-block animate-pulse">• • •</span>
-                    )}
-                  </Button>
-                  <Button
-                    onClick={sendWhatsApp}
-                    disabled={isSubmitting !== "none"}
-                    className={`${
-                      isSubmitting === "whatsapp" ? "opacity-80 cursor-not-allowed" : ""
-                    } bg-white border border-green-500 text-green-500 hover:bg-green-100 flex items-center gap-2`}
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                      alt="WhatsApp"
-                      className="w-6 h-6"
-                    />
-                    {isSubmitting === "whatsapp" ? "Opening WhatsApp…" : "WhatsApp"}
-                    {isSubmitting === "whatsapp" && (
-                      <span className="ml-2 inline-block animate-pulse">• • •</span>
-                    )}
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+        <div>
+          <label className="block text-sm font-medium text-gray-800 mb-1">
+            License Number
+          </label>
+          <div className="relative">
+            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <IdCard className="h-4 w-4" />
+            </span>
+            <Input
+              placeholder="Tally license no."
+              value={formData.license}
+              onChange={(e) => setFormData({ ...formData, license: e.target.value })}
+              className="pl-9 border-gray-300 focus-visible:ring-2 focus-visible:ring-tally-orange"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Issue */}
+      <div>
+        <label className="block text-sm font-medium text-gray-800 mb-1">
+          Issue <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <HelpCircle className="h-4 w-4" />
+          </span>
+          <select
+            value={formData.issue}
+            onChange={(e) => setFormData({ ...formData, issue: e.target.value })}
+            className="w-full border border-gray-300 rounded-md pl-9 pr-3 py-2 text-sm focus-visible:ring-2 focus-visible:ring-tally-orange focus-visible:outline-none"
+          >
+            <option value="" disabled>
+              Select an issue
+            </option>
+            {issueOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Details */}
+      <div>
+        <label className="block text-sm font-medium text-gray-800 mb-1">
+          Additional details (optional)
+        </label>
+        <textarea
+          placeholder="Share any steps, screenshots, or error messages to help us assist you faster."
+          value={formData.details}
+          onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm w-full min-h-[96px] focus-visible:ring-2 focus-visible:ring-tally-orange focus-visible:outline-none"
+        />
+      </div>
+    </div>
+
+    {/* Divider */}
+    <div className="my-3 h-px w-full bg-gray-100" />
+
+    <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:justify-between">
+      {/* Help note (left on desktop, top on mobile) */}
+      <p className="text-xs text-gray-500 flex items-center gap-1">
+        <HelpCircle className="h-3.5 w-3.5" />
+        Choose Gmail or WhatsApp—ensure the related app is logged in.
+      </p>
+
+      {/* Actions */}
+      <div className="flex items-center gap-2">
+        <Button
+          onClick={sendEmail}
+          disabled={isSubmitting !== "none"}
+          className={`${
+            isSubmitting === "email" ? "opacity-80 cursor-not-allowed" : ""
+          } bg-white border border-red-400 text-red-500 hover:bg-red-50 flex items-center gap-2 px-3 py-2 rounded-lg transition`}
+          title="Send via Gmail"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1024px-Gmail_icon_%282020%29.svg.png"
+            alt="Gmail"
+            className="w-5 h-4"
+          />
+          <span className="text-sm font-semibold">
+            {isSubmitting === "email" ? "Opening Gmail…" : "Gmail"}
+          </span>
+          {isSubmitting === "email" && (
+            <span className="ml-1 inline-block animate-pulse">• • •</span>
+          )}
+        </Button>
+
+        <Button
+          onClick={sendWhatsApp}
+          disabled={isSubmitting !== "none"}
+          className={`${
+            isSubmitting === "whatsapp" ? "opacity-80 cursor-not-allowed" : ""
+          } bg-white border border-green-500 text-green-600 hover:bg-green-50 flex items-center gap-2 px-3 py-2 rounded-lg transition`}
+          title="Send via WhatsApp"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            className="w-5 h-5"
+          />
+          <span className="text-sm font-semibold">
+            {isSubmitting === "whatsapp" ? "Opening WhatsApp…" : "WhatsApp"}
+          </span>
+          {isSubmitting === "whatsapp" && (
+            <span className="ml-1 inline-block animate-pulse">• • •</span>
+          )}
+        </Button>
+      </div>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+
           </div>
         </div>
       </div>

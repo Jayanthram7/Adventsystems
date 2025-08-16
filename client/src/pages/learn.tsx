@@ -11,7 +11,7 @@ import TallyGST from "./TallyGST.png";
 import TallyOffice from "./OfficeAutomation.png";
 import TallyPayroll from "./Payroll.png";
 
-// Example academy/gallery images (replace with your images)
+// Academy/gallery images
 import Acad1 from "./academy1.jpg";
 import Acad2 from "./academy2.jpg";
 import Acad3 from "./academy3.jpg";
@@ -121,37 +121,36 @@ export default function TallyLearn() {
     },
   ];
 
-  // Academy photo strip images (ensure these files exist or replace with your own)
   const academyImages: string[] = [Acad1, Acad2, Acad3, Acad4, Acad5];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-green-50 to-green-100 pt-[40px] flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-white via-green-50 to-green-100 pt-[32px] sm:pt-[40px] flex flex-col relative overflow-x-hidden">
       {/* Background SVG Decorations */}
       <BackgroundSVGs />
 
       <Header />
 
-      <main className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 flex-grow">
+      <main className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-20 flex-grow">
         {/* Hero Section with icon in heading */}
-        <section className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-700">
-              <GraduationCap className="w-6 h-6" />
+        <section className="text-center mb-12 sm:mb-14 lg:mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+            <span className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-green-100 text-green-700 flex-shrink-0">
+              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
             </span>
-            <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight">
+            <h1 className="text-[34px] sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
               <span className="text-tally-gray drop-shadow-sm">Learn</span>{" "}
               <span className="text-green-600">Tally.</span>
             </h1>
           </div>
-          <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-700 leading-relaxed">
+          <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed px-1">
             Empower business skills with Tally Learn — master accounting, inventory, and compliance
             with expert-led tutorials and real-world insights tailored for growth.
           </p>
 
-            <div className="mt-10 flex items-center justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <button
               onClick={() => setFormVisible(true)}
-              className="inline-flex items-center gap-2 bg-tally-orange hover:bg-tally-orange-hover text-white font-semibold rounded-full px-8 py-3 shadow-lg transition duration-300 focus:outline-none focus:ring-4 focus:ring-tally-orange/40"
+              className="inline-flex items-center gap-2 bg-tally-orange hover:bg-tally-orange-hover text-white font-semibold rounded-full px-6 py-3 sm:px-8 shadow-lg transition duration-300 focus:outline-none focus:ring-4 focus:ring-tally-orange/40"
             >
               Register
               <svg
@@ -169,7 +168,7 @@ export default function TallyLearn() {
             </button>
             <a
               href="#modules"
-              className="inline-flex items-center gap-2 bg-white text-green-600 hover:text-white hover:bg-green-600 border border-green-200 font-semibold rounded-full px-8 py-3 shadow-sm transition duration-300 focus:outline-none focus:ring-4 focus:ring-green-200"
+              className="inline-flex items-center gap-2 bg-white text-green-600 hover:text-white hover:bg-green-600 border border-green-200 font-semibold rounded-full px-6 py-3 sm:px-8 shadow-sm transition duration-300 focus:outline-none focus:ring-4 focus:ring-green-200"
             >
               Explore Modules
             </a>
@@ -177,50 +176,47 @@ export default function TallyLearn() {
         </section>
 
         {/* Featured Images / Modules */}
-        <section id="modules" className="mt-6">
-          {/* Make cards equal height with flex and ensure footer row aligns at bottom */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section id="modules" className="mt-4 sm:mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
             {cards.map((card, idx) => (
               <article
                 key={idx}
-                className="group relative overflow-hidden rounded-2xl bg-white border shadow-lg hover:shadow-2xl hover:scale-[1.015] transition-all duration-300 flex flex-col"
+                className="group relative overflow-hidden rounded-2xl bg-white border shadow-md sm:shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col"
               >
-                {/* Image area – fixed height for consistency */}
-                <div className="h-48 w-full overflow-hidden bg-gray-50">
+                {/* Image area – responsive height to prevent overflow on small screens */}
+                <div className="w-full overflow-hidden bg-gray-50 h-40 sm:h-44 lg:h-48">
                   {card.img ? (
                     <img
                       src={card.img}
                       alt={card.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="h-full w-full flex items-center justify-center text-green-700/70">
+                    <div className="h-full w-full flex items-center justify-center text-green-700/70 text-sm sm:text-base">
                       View all courses
                     </div>
                   )}
                 </div>
 
-                {/* Body */}
-                <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-900">{card.title}</h3>
-                  <p className="mt-2 text-gray-600 text-sm">{card.description}</p>
+                <div className="p-4 sm:p-5 flex-1 flex flex-col">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">{card.title}</h3>
+                  <p className="mt-2 text-gray-600 text-sm sm:text-[15px]">{card.description}</p>
 
-                  {/* Footer row pinned at bottom */}
                   <div className="mt-auto pt-4 flex items-center justify-between">
-                    <span className="text-green-700 font-semibold">{card.level}</span>
+                    <span className="text-green-700 font-semibold text-sm sm:text-base">{card.level}</span>
                     {card.link ? (
                       <a
                         href={card.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-green-600 hover:text-green-700 font-semibold"
+                        className="text-green-600 hover:text-green-700 font-semibold text-sm sm:text-base"
                       >
                         View →
                       </a>
                     ) : (
                       <button
                         onClick={card.onClick}
-                        className="text-green-600 hover:text-green-700 font-semibold"
+                        className="text-green-600 hover:text-green-700 font-semibold text-sm sm:text-base"
                       >
                         Enroll →
                       </button>
@@ -233,25 +229,39 @@ export default function TallyLearn() {
         </section>
 
         {/* Heading above CTA Banner */}
-        <h2 className="mt-16 text-3xl sm:text-4xl font-extrabold tracking-tight text-green-900 text-center">
-          Start learning now with Global IT Academy
-        </h2>
+        <div className="text-center pt-16">
+  {/* Icon + Heading in one row */}
+  <div className="flex items-center justify-center gap-2 sm:gap-3 ">
+    <span className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-green-100 text-green-700 flex-shrink-0">
+      <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
+    </span>
+    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-green-900">
+      Start learning now with Global IT Academy
+    </h2>
+  </div>
+
+  {/* Tagline centered under heading */}
+  <p className="mt-2 text-green-900/80 text-sm sm:text-base">
+    A glimpse into our classrooms, workshops, and student achievements.
+  </p>
+</div>
+
 
         {/* CTA Banner */}
-        <section className="mt-6">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-green-800 via-green-700 to-green-600 text-white p-8 sm:p-12 shadow-2xl">
-            <div className="relative z-10 max-w-3xl">
-              <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+        <section className="mt-4 sm:mt-6">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-green-800 via-green-700 to-green-600 text-white p-6 sm:p-8 lg:p-12 shadow-2xl">
+            <div className="relative z-10 max-w-3xl mx-auto text-center sm:text-left">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
                 Learn faster with curated Tally pathways
               </h3>
-              <p className="mt-3 text-green-100">
+              <p className="mt-2 sm:mt-3 text-green-100 text-sm sm:text-base">
                 Bite-sized modules, step-by-step projects, and hands-on exercises designed for busy
                 professionals.
               </p>
-              <div className="mt-6">
+              <div className="mt-5 sm:mt-6">
                 <button
                   onClick={() => setFormVisible(true)}
-                  className="inline-flex items-center gap-2 bg-white text-green-600 hover:bg-green-50 font-semibold rounded-full px-6 py-3 shadow-md transition duration-300 focus:outline-none focus:ring-4 focus:ring-white/40"
+                  className="inline-flex items-center gap-2 bg-white text-green-700 hover:bg-green-50 font-semibold rounded-full px-5 py-2.5 sm:px-6 sm:py-3 shadow-md transition duration-300 focus:outline-none focus:ring-4 focus:ring-white/40"
                 >
                   Start Registration
                   <svg
@@ -272,32 +282,30 @@ export default function TallyLearn() {
           </div>
         </section>
 
-        {/* Our Academy – photo strip with icon and 4px-gap moving filmstrip */}
-        <section className="relative py-10 sm:py-16 overflow-hidden">
+        {/* Our Academy – 4px gap, tallest-aware, mobile-safe filmstrip */}
+        <section className="relative py-8 sm:py-10 lg:py-16 overflow-hidden">
           <AccoladesBackground />
           <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Centered header */}
-            <div className="flex items-center justify-center gap-3 mb-2">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-700">
-                <ImageIcon className="w-5 h-5" />
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-2">
+              <span className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-green-100 text-green-700">
+                <ImageIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-green-900">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-green-900">
                 Our Academy
               </h2>
             </div>
 
-            {/* Centered tagline */}
-            <p className="text-green-900/80 text-sm sm:text-base mb-6 sm:mb-8 text-center">
+            <p className="text-green-900/80 text-sm sm:text-base mb-4 sm:mb-6 lg:mb-8 text-center px-2">
               A glimpse into our classrooms, workshops, and student achievements.
             </p>
 
-            {/* 4px-gap filmstrip: increase height for better visibility */}
-            <GapFilmstrip
+            <TallestAwareGapFilmstrip
               images={academyImages}
-              itemWidthPx={320}      // increase width if desired
-              itemHeightPx={220}     // increased height
-              gapPx={4}              // EXACT 4px gap
-              speedPxPerSec={60}
+              gapPx={4}
+              minHeightPx={160}   // mobile safety minimum
+              maxHeightPxCap={260} // cap to avoid oversized height on small screens
+              speedPxPerSec={50}   // slightly slower for mobile readability
               pauseOnHover={true}
               rounded={true}
               containerBgClass="bg-white"
@@ -344,7 +352,7 @@ export default function TallyLearn() {
               Submit
             </button>
             <p className="text-xs text-gray-500 text-center">
-              By registering, consent is provided to be contacted via WhatsApp for course updates.
+              Please make sure to be logged in the Whatsapp App / Whatsapp Web on your device before submitting the application . 
             </p>
           </div>
         </Modal>
@@ -378,8 +386,8 @@ function Modal({
       {/* Dialog */}
       <div className="relative z-10 w-full max-w-md">
         <div className="animate-slideUp rounded-2xl bg-white shadow-2xl border border-green-100">
-          <div className="flex items-center justify-between px-6 py-4 border-b">
-            <h3 className="text-lg font-bold text-gray-900">{title}</h3>
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900">{title}</h3>
             <button
               onClick={onClose}
               aria-label="Close"
@@ -399,7 +407,7 @@ function Modal({
               </svg>
             </button>
           </div>
-          <div className="px-6 py-5">{children}</div>
+          <div className="px-4 sm:px-6 py-4 sm:py-5">{children}</div>
         </div>
       </div>
     </div>
@@ -413,7 +421,7 @@ function BackgroundSVGs() {
       {/* Grid mesh */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute -top-24 -right-24 w-[700px] opacity-20 text-green-300"
+        className="pointer-events-none absolute -top-24 -right-24 w-[560px] sm:w-[700px] opacity-20 text-green-300"
         viewBox="0 0 600 600"
         fill="none"
       >
@@ -428,7 +436,7 @@ function BackgroundSVGs() {
       {/* Subtle dots */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute top-40 left-6 w-40 opacity-30 text-green-300"
+        className="pointer-events-none absolute top-40 left-2 sm:left-6 w-32 sm:w-40 opacity-30 text-green-300"
         viewBox="0 0 100 100"
         fill="currentColor"
       >
@@ -452,13 +460,13 @@ function BackgroundSVGs() {
   );
 }
 
-/* ---------- 4px-gap seamless filmstrip (taller images) ---------- */
-function GapFilmstrip({
+/* ---------- Tallest-aware, 4px-gap, mobile-safe filmstrip ---------- */
+function TallestAwareGapFilmstrip({
   images,
-  itemWidthPx = 320,  // adjust to your desired uniform size
-  itemHeightPx = 220, // increased height as requested
-  gapPx = 4,          // EXACT 4px gap
-  speedPxPerSec = 60,
+  gapPx = 4,                 // exact 4px gap
+  minHeightPx = 160,         // mobile minimum
+  maxHeightPxCap = 260,      // max cap to avoid oversizing on small screens
+  speedPxPerSec = 50,
   pauseOnHover = true,
   rounded = true,
   containerBgClass = "bg-white",
@@ -466,10 +474,9 @@ function GapFilmstrip({
   shadowClass = "shadow",
 }: {
   images: string[];
-  itemWidthPx?: number;
-  itemHeightPx?: number;
-  gapPx?: number; // 4px gap
-  speedPx?: number; // unused alias
+  gapPx?: number;
+  minHeightPx?: number;
+  maxHeightPxCap?: number;
   speedPxPerSec?: number;
   pauseOnHover?: boolean;
   rounded?: boolean;
@@ -482,28 +489,62 @@ function GapFilmstrip({
   const lastTsRef = useRef<number | null>(null);
   const offsetRef = useRef(0);
   const pausedRef = useRef(false);
-  const wrapWidthRef = useRef(0);
+  const [tallest, setTallest] = useState<number>(minHeightPx);
 
-  // Duplicate images once for seamless loop
   const duplicateArray = useMemo(() => [...images, ...images], [images]);
 
-  // Compute the width of one tile including the gap that follows it (except after last in a set)
-  const tileTotalPx = itemWidthPx + gapPx;
+  // Measure tallest image (naturalHeight) and clamp to caps for mobile safety
+  useEffect(() => {
+    let mounted = true;
+    Promise.all(
+      images.map(
+        (src) =>
+          new Promise<number>((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(img.naturalHeight || 0);
+            img.onerror = () => resolve(0);
+            img.src = src as string;
+          })
+      )
+    ).then((heights) => {
+      if (!mounted) return;
+      const maxH = Math.max(...heights, minHeightPx);
+      setTallest(Math.min(Math.max(maxH, minHeightPx), maxHeightPxCap));
+    });
+    return () => {
+      mounted = false;
+    };
+  }, [images, minHeightPx, maxHeightPxCap]);
+
+  // Compute wrap width (sum widths of original set + gaps) after layout paints
+  const wrapWidthRef = useRef(0);
+  const computeWrapWidth = () => {
+    const el = trackRef.current;
+    if (!el) return 0;
+    const kids = Array.from(el.children) as HTMLElement[];
+    let total = 0;
+    // Only count first "images.length" items (original set)
+    for (let i = 0; i < images.length && i < kids.length; i++) {
+      total += kids[i].getBoundingClientRect().width;
+      if (i < images.length - 1) total += gapPx;
+    }
+    return total;
+  };
 
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
 
-    // Total width to wrap by: sum of one original set including gaps between items
-    const originalCount = images.length;
-    const totalGapsInSet = Math.max(0, originalCount - 1);
-    const wrapWidth = originalCount * itemWidthPx + totalGapsInSet * gapPx;
-    wrapWidthRef.current = wrapWidth;
-
     // Reset
     offsetRef.current = 0;
     el.style.transform = "translateX(0px)";
     lastTsRef.current = null;
+
+    // measure wrap after paint
+    const measure = () => {
+      wrapWidthRef.current = computeWrapWidth();
+    };
+    const measureRaf = requestAnimationFrame(measure);
 
     const step = (ts: number) => {
       if (pausedRef.current) {
@@ -519,7 +560,7 @@ function GapFilmstrip({
 
       const wrap = wrapWidthRef.current;
       if (wrap > 0 && Math.abs(offsetRef.current) >= wrap) {
-        offsetRef.current += wrap; // wrap seamlessly
+        offsetRef.current += wrap; // seamless wrap
       }
 
       el.style.transform = `translateX(${offsetRef.current}px)`;
@@ -528,26 +569,20 @@ function GapFilmstrip({
 
     rafRef.current = requestAnimationFrame(step);
 
+    const onResize = () => {
+      wrapWidthRef.current = computeWrapWidth();
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+
     return () => {
+      cancelAnimationFrame(measureRaf);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
     };
-  }, [images.length, itemWidthPx, gapPx, speedPxPerSec]);
-
-  // Inline styles ensuring precise 4px gaps and no extra margins/padding
-  const tileStyle: React.CSSProperties = {
-    width: `${itemWidthPx}px`,
-    height: `${itemHeightPx}px`,
-    flex: "0 0 auto",
-    marginRight: `${gapPx}px`,
-  };
-
-  const imgStyle: React.CSSProperties = {
-    width: "100%",
-    height: "100%",
-    display: "block",
-    objectFit: "cover",
-  };
+  }, [images.length, gapPx, tallest, speedPxPerSec]);
 
   return (
     <div className="relative w-full">
@@ -568,26 +603,35 @@ function GapFilmstrip({
       >
         <div
           ref={trackRef}
-          // Use gap-0; spacing is controlled only by marginRight inline (exact 4px).
           className="flex gap-0 items-center will-change-transform select-none"
           style={{ transform: "translateX(0px)" }}
         >
           {duplicateArray.map((src, i) => {
-            // Remove the trailing margin after the very last tile to avoid extra space
             const isLast = i === duplicateArray.length - 1;
+            const tileStyle: React.CSSProperties = {
+              height: `${tallest}px`,
+              flex: "0 0 auto",
+              marginRight: isLast ? 0 : gapPx,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "white",
+            };
+            const imgStyle: React.CSSProperties = {
+              maxHeight: "100%",
+              height: "100%",
+              width: "auto",
+              display: "block",
+              objectFit: "contain",
+            };
             return (
-              <figure
-                key={`tile-${i}`}
-                className="m-0 p-0"
-                style={isLast ? { ...tileStyle, marginRight: 0 } : tileStyle}
-                title="Gallery"
-              >
+              <figure key={`tile-${i}`} className="m-0 p-0" style={tileStyle} title="Gallery">
                 <img
                   src={src}
                   alt={`Gallery ${i + 1}`}
                   style={imgStyle}
                   draggable={false}
-                  loading={i === 0 ? "eager" : "lazy"}
+                  loading={i < 3 ? "eager" : "lazy"}
                 />
               </figure>
             );
@@ -598,14 +642,13 @@ function GapFilmstrip({
   );
 }
 
-/* Background used for the academy strip section (optional, can be removed or adjusted) */
+/* Background used for the academy strip section (optional) */
 function AccoladesBackground() {
   return (
     <>
-      {/* Subtle diagonal ribbons */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[1600px] max-w-[130vw] opacity-25"
+        className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[1200px] sm:w-[1400px] max-w-[130vw] opacity-25"
         viewBox="0 0 1600 280"
         fill="none"
       >
