@@ -136,7 +136,7 @@ export default function Home() {
                     </div>
                     <div className="text-lg font-bold text-tally-gray">In-house</div>
                     <div className="text-sm text-gray-600 font-medium">Development</div>
-                    <div className="text-xs text-gray-500 mt-1">Developed by Team Advent</div>
+                    <div className="text-xs text-gray-500 mt-1"> By Team Advent</div>
                   </div>
                 </div>
               </div>
