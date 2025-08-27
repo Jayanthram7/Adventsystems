@@ -501,37 +501,38 @@ export default function About() {
     </h3>
 
     <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-  {displayed1Solutions.map((item, idx) => {
-    const isLast = idx === displayed1Solutions.length - 1;
-    const isOdd = displayed1Solutions.length % 3 === 1; // one extra after full rows of 3
-    return (
-      <article
-        key={idx}
-        className={`group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md
-          ${isLast && isOdd ? "lg:col-start-2" : ""}`}
-      >
-        {/* top sheen */}
-        <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
-        {/* corner glow */}
-        <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
-        <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+      {displayed1Solutions.map((item, idx) => {
+        const isLast = idx === displayed1Solutions.length - 1;
+        // For a 3-col grid, a single leftover happens when length % 3 === 1
+        const hasSingleInLastRow = displayed1Solutions.length % 3 === 1;
 
-        <div className="mb-2 flex items-start gap-2">
-          <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
-          <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
-            {item.title}
-          </h4>
-        </div>
-        <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
-          {item.desc}
-        </p>
+        return (
+          <article
+            key={idx}
+            className={`group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md
+              ${isLast && hasSingleInLastRow ? "lg:col-start-2" : ""}`}
+          >
+            {/* top sheen */}
+            <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
+            {/* corner glow */}
+            <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+            <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
 
-        <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
-      </article>
-    );
-  })}
-</div>
+            <div className="mb-2 flex items-start gap-2">
+              <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
+              <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+                {item.title}
+              </h4>
+            </div>
+            <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+              {item.desc}
+            </p>
 
+            <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+          </article>
+        );
+      })}
+    </div>
 
     {solutions.length > 6 && (
       <div className="text-center mt-8 sm:mt-10">
@@ -556,37 +557,38 @@ export default function About() {
     </h3>
 
     <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-  {displayed1Solutions.map((item, idx) => {
-    const isLast = idx === displayed1Solutions.length - 1;
-    const isOdd = displayed1Solutions.length % 3 === 1; // one extra after full rows of 3
-    return (
-      <article
-        key={idx}
-        className={`group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md
-          ${isLast && isOdd ? "lg:col-start-2" : ""}`}
-      >
-        {/* top sheen */}
-        <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
-        {/* corner glow */}
-        <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
-        <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+      {displayedSolutions.map((item, idx) => {
+        const isLast = idx === displayedSolutions.length - 1;
+        // Critically: use displayedSolutions here, not displayed1Solutions
+        const hasSingleInLastRow = displayedSolutions.length % 3 === 1;
 
-        <div className="mb-2 flex items-start gap-2">
-          <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
-          <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
-            {item.title}
-          </h4>
-        </div>
-        <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
-          {item.desc}
-        </p>
+        return (
+          <article
+            key={idx}
+            className={`group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md
+              ${isLast && hasSingleInLastRow ? "lg:col-start-2" : ""}`}
+          >
+            {/* top sheen */}
+            <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
+            {/* corner glow */}
+            <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+            <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
 
-        <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
-      </article>
-    );
-  })}
-</div>
+            <div className="mb-2 flex items-start gap-2">
+              <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
+              <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+                {item.title}
+              </h4>
+            </div>
+            <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+              {item.desc}
+            </p>
 
+            <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+          </article>
+        );
+      })}
+    </div>
 
     {solutions.length > 6 && (
       <div className="text-center mt-8 sm:mt-10">
