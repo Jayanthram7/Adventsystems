@@ -1,6 +1,6 @@
 "use client";
 import { Phone, Mail, Globe } from "lucide-react";
-import { SiWhatsapp, SiYoutube, SiFacebook } from "react-icons/si";
+import { SiWhatsapp, SiYoutube, SiFacebook, SiLinkedin } from "react-icons/si";
 import { useLocation } from "wouter";
 
 export default function Footer() {
@@ -37,7 +37,7 @@ export default function Footer() {
                 <SiWhatsapp className="h-5 w-5" />
               </a>
               <a
-                href="https://youtube.com/your-channel"
+                href="https://www.youtube.com/@AdventSystems-Tally"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-red-500 hover:bg-red-600 p-3 rounded-full transition-all duration-200 hover:scale-110"
@@ -45,12 +45,20 @@ export default function Footer() {
                 <SiYoutube className="h-5 w-5" />
               </a>
               <a
-                href="https://facebook.com/your-page"
+                href="https://www.facebook.com/adventtally"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition-all duration-200 hover:scale-110"
               >
                 <SiFacebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/kanakaraj-chinnaswamy-bab84124"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition-all duration-200 hover:scale-110"
+              >
+                <SiLinkedin className="h-5 w-5" />
               </a>
             </div>
           </div>

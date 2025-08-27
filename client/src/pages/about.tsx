@@ -323,7 +323,7 @@ export default function About() {
      <strong>Promoted in the early 1980’s</strong> under the leadership of <strong>Mr. Kanakaraj Chinnaswamy</strong>, Advent Systems is among the earliest IT/ITES organizations in the region. As one of the earliest partners of Tally in India, Advent has been at the forefront of Sales, Support, Training, and Customization of Tally for over three decades.
   </p>
   <p>
-    With a seasoned team bringing <strong>50+ years</strong> of combined expertise, Advent supports a strong base of <strong>3,500+ Tally customers</strong>, spanning MSMEs, consultants, auditors, and trading and manufacturing organizations.
+    With a seasoned team bringing <strong>60+ years</strong> of combined expertise, Advent supports a strong base of <strong>3,500+ Tally customers</strong>, spanning MSMEs, consultants, auditors, trading and manufacturing organizations.
   </p>
   <p>
     Today, Team Advent continues its legacy of excellence by embracing AI-powered advancements across Sales and Service functions—delivering greater efficiency, insights, and value to its customers.

@@ -330,7 +330,7 @@ What would you like to know today?`,
               </Button>
             </div>
             <p className="text-gray-500 text-xs mt-2 text-center transition-colors duration-200 hover:text-gray-700">
-              This assistant uses AI and may occasionally provide inaccurate information. Please verify important details.
+              AI Powered guidance only. Always verify with official sources.
             </p>
           </div>
         </div>

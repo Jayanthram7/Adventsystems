@@ -212,7 +212,7 @@ What would you like to know today?`,
                       Beta
                     </span>
                   </div>
-                  <p className="text-blue-100 text-xs">Ready to help with your business needs</p>
+                  <p className="text-blue-100 text-xs">AI Powered guidance only. Always validate with official sources</p>
                 </div>
               </div>
 
