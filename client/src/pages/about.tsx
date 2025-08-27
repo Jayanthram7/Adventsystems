@@ -350,7 +350,7 @@ export default function About() {
         <div className="mt-1 text-xs font-medium text-slate-600">Customers Supported</div>
       </div>
       <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="text-2xl font-extrabold text-blue-700">50+ years</div>
+        <div className="text-2xl font-extrabold text-blue-700">60+ years</div>
         <div className="mt-1 text-xs font-medium text-slate-600">Team Expertise</div>
       </div>
     </div>
