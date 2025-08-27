@@ -33,12 +33,9 @@ export default function FloatingChat() {
 
   useEffect(() => {
     if (isOpen) {
-      // open => reset unread
       setUnread(0);
-      // focus input after short delay so it works on mobile
       setTimeout(() => inputRef.current?.focus(), 120);
     }
-    // ensure we only scroll when panel is open
     if (isOpen) scrollToBottom();
   }, [isOpen, messages.length]);
 
@@ -92,7 +89,6 @@ What would you like to know today?`,
       };
       setMessages(prev => [...prev, aiMessage]);
 
-      // if user minimized the widget, show unread
       if (!isOpen) {
         setUnread(u => u + 1);
       }
@@ -112,7 +108,7 @@ What would you like to know today?`,
   const handleSendMessage = () => {
     const message = inputValue.trim();
     if (!message || chatMutation.isPending) return;
-  
+
     const userMessage: Message = {
       id: `user_${Date.now()}`,
       message,
@@ -123,7 +119,7 @@ What would you like to know today?`,
     setInputValue("");
     setIsMinimized(false);
     setIsOpen(true);
-  
+
     // 👉 Custom check for "charges" or "price"
     if (/charges?|price/i.test(message)) {
       const customReply: Message = {
@@ -136,11 +132,10 @@ What would you like to know today?`,
       setMessages(prev => [...prev, customReply]);
       return; // stop here, don’t call API
     }
-  
+
     // Otherwise call API
     chatMutation.mutate(message);
   };
-  
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -149,20 +144,17 @@ What would you like to know today?`,
     }
   };
 
-  // Toggle open from minimized button
   const handleOpenFromMinimized = () => {
     setIsMinimized(false);
     setIsOpen(true);
     setUnread(0);
   };
 
-  // Minimize to small button
   const handleMinimize = () => {
     setIsOpen(false);
     setIsMinimized(true);
   };
 
-  // Close completely (optional) - here we minimize so user can reopen
   const handleClose = () => {
     setIsOpen(false);
     setIsMinimized(true);
@@ -182,7 +174,6 @@ What would you like to know today?`,
             title="Chat with us"
           >
             <MessageCircle className="w-6 h-6 text-white" />
-
             <div className="flex items-center gap-2">
               <span className="text-white font-medium">Tally Assistant</span>
               <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">
@@ -216,7 +207,10 @@ What would you like to know today?`,
                 <div>
                   <div className="flex items-center gap-2">
                     <h4 className="text-white font-semibold">TallyPrime Assistant</h4>
-                    <span className="text-white/80 text-xs">✨</span>
+                    {/* ✅ Replaced emoji with Beta Badge */}
+                    <span className="bg-yellow-400 text-[#0f34a3] text-[10px] px-2 py-0.5 rounded font-bold uppercase">
+                      Beta
+                    </span>
                   </div>
                   <p className="text-blue-100 text-xs">Ready to help with your business needs</p>
                 </div>

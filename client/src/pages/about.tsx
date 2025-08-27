@@ -319,16 +319,17 @@ export default function About() {
 
     {/* Content */}
     <div className="text-blue-950/85 text-[0.95rem] sm:text-[0.98rem] leading-relaxed space-y-3 text-justify">
-      <p>
-        Promoted in the early 1980s under the leadership of Mr. Chinnaswamy Kanakaraj, Advent Systems is among the earliest IT/ITES organizations in the region. As one of the earliest partners of Tally in India, Advent has been at the forefront of Sales, Support, Training, and Customization of Tally for over three decades.
-      </p>
-      <p>
-        With a seasoned team bringing 50+ years of combined expertise, Advent supports a strong base of 3,500+ Tally customers, spanning MSMEs, consultants, auditors, and trading and manufacturing organizations.
-      </p>
-      <p>
-        Today, Team Advent continues its legacy of excellence by embracing AI-powered advancements across Sales and Service functions—delivering greater efficiency, insights, and value to its customers.
-      </p>
-    </div>
+  <p>
+     <strong>Promoted in the early 1980’s</strong> under the leadership of <strong>Mr. Kanakaraj Chinnaswamy</strong>, Advent Systems is among the earliest IT/ITES organizations in the region. As one of the earliest partners of Tally in India, Advent has been at the forefront of Sales, Support, Training, and Customization of Tally for over three decades.
+  </p>
+  <p>
+    With a seasoned team bringing <strong>50+ years</strong> of combined expertise, Advent supports a strong base of <strong>3,500+ Tally customers</strong>, spanning MSMEs, consultants, auditors, and trading and manufacturing organizations.
+  </p>
+  <p>
+    Today, Team Advent continues its legacy of excellence by embracing AI-powered advancements across Sales and Service functions—delivering greater efficiency, insights, and value to its customers.
+  </p>
+</div>
+
   </div>
 </div>
 
@@ -337,20 +338,20 @@ export default function About() {
     {/* Highlights / Stats */}
     <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-4">
       <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="text-2xl font-extrabold text-blue-700">3,500+</div>
-        <div className="mt-1 text-xs font-medium text-slate-600">Customers Served</div>
+        <div className="text-2xl font-extrabold text-blue-700">5 Star </div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Certified Partner of Tally</div>
       </div>
       <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="text-2xl font-extrabold text-blue-700">30+ yrs</div>
+        <div className="text-2xl font-extrabold text-blue-700">35+ years</div>
         <div className="mt-1 text-xs font-medium text-slate-600">Tally Partnership</div>
       </div>
       <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="text-2xl font-extrabold text-blue-700">50+ yrs</div>
-        <div className="mt-1 text-xs font-medium text-slate-600">Team Expertise</div>
+        <div className="text-2xl font-extrabold text-blue-700">3500+</div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Customers Supported</div>
       </div>
       <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="text-2xl font-extrabold text-blue-700">MSMEs → Enterprise</div>
-        <div className="mt-1 text-xs font-medium text-slate-600">Across Industries</div>
+        <div className="text-2xl font-extrabold text-blue-700">50+ years</div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Team Expertise</div>
       </div>
     </div>
 
@@ -398,9 +399,7 @@ export default function About() {
     </div>
 
     {/* Subtext / trust copy */}
-    <p className="mt-6 text-center text-xs text-blue-900/70">
-      Trusted by 3,500+ customers across Coimbatore and Tamil Nadu for Tally solutions and services
-      </p>
+    
   </div>
 </section>
 
@@ -502,31 +501,37 @@ export default function About() {
     </h3>
 
     <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      {displayed1Solutions.map((item, idx) => (
-        <article
-          key={idx}
-          className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-        >
-          {/* top sheen */}
-          <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
-          {/* corner glow */}
-          <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
-          <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+  {displayed1Solutions.map((item, idx) => {
+    const isLast = idx === displayed1Solutions.length - 1;
+    const isOdd = displayed1Solutions.length % 3 === 1; // one extra after full rows of 3
+    return (
+      <article
+        key={idx}
+        className={`group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md
+          ${isLast && isOdd ? "lg:col-start-2" : ""}`}
+      >
+        {/* top sheen */}
+        <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
+        {/* corner glow */}
+        <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+        <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
 
-          <div className="mb-2 flex items-start gap-2">
-            <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
-            <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
-              {item.title}
-            </h4>
-          </div>
-          <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
-            {item.desc}
-          </p>
+        <div className="mb-2 flex items-start gap-2">
+          <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
+          <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+            {item.title}
+          </h4>
+        </div>
+        <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+          {item.desc}
+        </p>
 
-          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
-        </article>
-      ))}
-    </div>
+        <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+      </article>
+    );
+  })}
+</div>
+
 
     {solutions.length > 6 && (
       <div className="text-center mt-8 sm:mt-10">
@@ -551,31 +556,37 @@ export default function About() {
     </h3>
 
     <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      {displayedSolutions.map((item, idx) => (
-        <article
-          key={idx}
-          className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-        >
-          {/* top sheen */}
-          <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
-          {/* corner glow */}
-          <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
-          <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+  {displayed1Solutions.map((item, idx) => {
+    const isLast = idx === displayed1Solutions.length - 1;
+    const isOdd = displayed1Solutions.length % 3 === 1; // one extra after full rows of 3
+    return (
+      <article
+        key={idx}
+        className={`group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md
+          ${isLast && isOdd ? "lg:col-start-2" : ""}`}
+      >
+        {/* top sheen */}
+        <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
+        {/* corner glow */}
+        <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+        <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
 
-          <div className="mb-2 flex items-start gap-2">
-            <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
-            <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
-              {item.title}
-            </h4>
-          </div>
-          <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
-            {item.desc}
-          </p>
+        <div className="mb-2 flex items-start gap-2">
+          <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
+          <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+            {item.title}
+          </h4>
+        </div>
+        <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+          {item.desc}
+        </p>
 
-          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
-        </article>
-      ))}
-    </div>
+        <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+      </article>
+    );
+  })}
+</div>
+
 
     {solutions.length > 6 && (
       <div className="text-center mt-8 sm:mt-10">
@@ -595,6 +606,7 @@ export default function About() {
     )}
   </div>
 </section>
+
 
       
 
@@ -643,75 +655,84 @@ export default function About() {
 
       {/* Tally Learn Promo */}
       <section className="relative py-10 sm:py-14 bg-white overflow-hidden">
-        <PromoBackground />
+  <PromoBackground />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* OUTSIDE: Icon + Heading */}
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-              <GraduationCap className="w-5 h-5" />
-            </span>
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* OUTSIDE: Icon + Heading */}
+    <div className="flex flex-col items-center justify-center text-center mb-4">
+      <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-700 mb-3">
+        <GraduationCap className="w-6 h-6" />
+      </span>
 
-            {/* Keep text next to icon and control wrapping */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-blue-900">
-              <span className="inline-block">
-                Explore Tally Learn by Global IT Academy,
-              </span>{" "}
-              <span className="inline-block">
-                the Tally education subsidiary of Advent Systems
-              </span>
-            </h2>
-          </div>
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-blue-900">
+        <span className="block">
+          Explore Tally Learn by Global IT Academy,
+        </span>
+        <span className="block">
+          the Tally education subsidiary of Advent Systems
+        </span>
+      </h2>
+    </div>
 
-          {/* OUTSIDE: Tagline */}
-          <p className="text-blue-900/80 text-sm sm:text-base text-center mb-8 sm:mb-10 inline-block ml-14">
-            Learning never stops — especially when solutions are at your fingertips.
-          </p>
+    {/* OUTSIDE: Tagline */}
+    <p className="text-blue-900/80 text-sm sm:text-base text-center mb-8 sm:mb-10">
+      Learning never stops — especially when solutions are at your fingertips.
+    </p>
 
-          {/* Banner (separate block) */}
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white shadow-2xl">
-            <div className="px-6 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-10 text-center">
-              {/* INSIDE: Icon next to heading 'Tally Learn' */}
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white">
-                  <GraduationCap className="w-5 h-5" />
-                </span>
-                <h3 className="text-3xl sm:text-3xl lg:text-5xl font-bold tracking-tight">
-                  Tally Learn
-                </h3>
-              </div>
-
-              {/* Body copy */}
-              <p className="mx-auto max-w-2xl text-base sm:text-lg text-blue-100/90 leading-relaxed">
-                Explore Tally Learn, the learning subsidiary of Advent Systems, offering practical, bite-sized modules and hands-on projects designed to empower professionals with essential Tally skills for business success.
-              </p>
-
-              <div className="mt-6 sm:mt-8">
-                <button
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    setTimeout(() => setLocation("/learn"), 300);
-                  }}
-                  className="inline-flex items-center gap-2 bg-white text-blue-800 hover:bg-blue-50 font-semibold rounded-full px-6 py-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/40 hover:shadow-xl hover:scale-105"
-                >
-                  Register for Tally Learn
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            {/* Decorative blur orbs */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
-            <div className="absolute -bottom-8 -right-10 w-28 h-28 bg-white/10 rounded-full blur-2xl" />
-          </div>
+    {/* Banner (separate block) */}
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white shadow-2xl">
+      <div className="px-6 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-10 text-center">
+        {/* INSIDE: Icon next to heading 'Tally Learn' */}
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white">
+            <GraduationCap className="w-5 h-5" />
+          </span>
+          <h3 className="text-3xl sm:text-3xl lg:text-5xl font-bold tracking-tight">
+            Tally Learn
+          </h3>
         </div>
-      </section>
+
+        {/* Body copy */}
+        <p className="mx-auto max-w-2xl text-base sm:text-lg text-blue-100/90 leading-relaxed">
+          Explore Tally Learn, the learning subsidiary of Advent Systems,
+          offering practical, bite-sized modules and hands-on projects designed
+          to empower professionals with essential Tally skills for business
+          success.
+        </p>
+
+        {/* CTA Button */}
+        <div className="mt-6 sm:mt-8">
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setTimeout(() => setLocation("/learn"), 300);
+            }}
+            className="inline-flex items-center gap-2 bg-white text-blue-800 hover:bg-blue-50 font-semibold rounded-full px-6 py-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/40 hover:shadow-xl hover:scale-105"
+          >
+            Register for Tally Learn
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Decorative blur orbs */}
+      <div className="absolute -top-6 -left-6 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
+      <div className="absolute -bottom-8 -right-10 w-28 h-28 bg-white/10 rounded-full blur-2xl" />
+    </div>
+  </div>
+</section>
+
 
       <Footer />
     </div>

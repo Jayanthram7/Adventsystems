@@ -91,7 +91,7 @@ export default function Careers() {
           </span>
 
           <h1 className="mt-6 text-5xl md:text-7xl font-extrabold leading-tight text-tally-gray">
-            Build a Meaningful Career at{" "}
+            Build an Impactful Career at{" "}
             <span className="text-blue-700 drop-shadow-sm">Advent Systems</span>
           </h1>
 

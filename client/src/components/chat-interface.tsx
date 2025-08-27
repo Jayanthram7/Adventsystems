@@ -149,9 +149,15 @@ What would you like to know today?`,
                   <Bot className="h-4 w-4 text-tally-blue" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">✨ TallyPrime Assistant</h3>
-                  <p className="text-blue-100 text-sm">Ready to help with your business needs</p>
-                </div>
+  <h3 className="text-white font-semibold flex items-center gap-2">
+    TallyPrime Assistant
+    <span className="bg-yellow-400 text-[#0f34a3] text-[10px] px-2 py-0.5 rounded font-bold uppercase">
+      Beta
+    </span>
+  </h3>
+  <p className="text-blue-100 text-sm">Ready to help with your business needs</p>
+</div>
+
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -229,10 +235,13 @@ What would you like to know today?`,
                 <Bot className="h-5 w-5 text-tally-blue" />
               </div>
               <div>
-                <div className="flex items-center justify-center space-x-2">
-                  <h3 className="text-white font-semibold text-lg">TallyPrime Assistant</h3>
-                  <span className="text-white text-lg">✨</span>
-                </div>
+              <div className="flex items-center justify-center space-x-2">
+  <h3 className="text-white font-semibold text-lg">TallyPrime Assistant</h3>
+  <span className="bg-yellow-400 text-[#0f34a3] text-[11px] px-2 py-0.5 rounded font-bold uppercase">
+    Beta
+  </span>
+</div>
+
                 <p className="text-blue-100 text-sm">Your AI business companion</p>
               </div>
             </div>
