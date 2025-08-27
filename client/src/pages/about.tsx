@@ -168,8 +168,9 @@ export default function About() {
   ];
 
   const [showAllSolutions, setShowAllSolutions] = useState(false);
+  const [showAllSolutions1, setShowAllSolutions1] = useState(false);
   const displayedSolutions = showAllSolutions ? advancedSolutions : advancedSolutions.slice(0, 6);
-  const displayed1Solutions = showAllSolutions ? coreSolutions : coreSolutions.slice(0, 6);
+  const displayed1Solutions = showAllSolutions1 ? coreSolutions : coreSolutions.slice(0, 6);
 
   const whyUs = [
     {
@@ -503,9 +504,7 @@ export default function About() {
     <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {displayed1Solutions.map((item, idx) => {
         const isLast = idx === displayed1Solutions.length - 1;
-        // For a 3-col grid, a single leftover happens when length % 3 === 1
-        const hasSingleInLastRow = displayed1Solutions.length % 3 === 1;
-
+        const hasSingleInLastRow = displayed1Solutions.length % 3 === 1; // 1 leftover in last row
         return (
           <article
             key={idx}
@@ -534,16 +533,17 @@ export default function About() {
       })}
     </div>
 
-    {solutions.length > 6 && (
+    {/* Core: View More / Less controls its own state */}
+    {coreSolutions.length > 6 && (
       <div className="text-center mt-8 sm:mt-10">
         <button
-          onClick={() => setShowAllSolutions(!showAllSolutions)}
+          onClick={() => setShowAllSolutions1(!showAllSolutions1)}
           className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
                      bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
                      font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
                      active:scale-[0.99] transition relative overflow-hidden"
         >
-          <span className="relative">{showAllSolutions ? 'Show Less' : 'View More'}</span>
+          <span className="relative">{showAllSolutions1 ? 'Show Less' : 'View More'}</span>
           <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
             <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
           </svg>
@@ -559,9 +559,7 @@ export default function About() {
     <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {displayedSolutions.map((item, idx) => {
         const isLast = idx === displayedSolutions.length - 1;
-        // Critically: use displayedSolutions here, not displayed1Solutions
-        const hasSingleInLastRow = displayedSolutions.length % 3 === 1;
-
+        const hasSingleInLastRow = displayedSolutions.length % 3 === 1; // 1 leftover in last row
         return (
           <article
             key={idx}
@@ -590,7 +588,8 @@ export default function About() {
       })}
     </div>
 
-    {solutions.length > 6 && (
+    {/* Advanced: View More / Less controls its own state */}
+    {advancedSolutions.length > 6 && (
       <div className="text-center mt-8 sm:mt-10">
         <button
           onClick={() => setShowAllSolutions(!showAllSolutions)}
@@ -608,6 +607,7 @@ export default function About() {
     )}
   </div>
 </section>
+
 
 
       
