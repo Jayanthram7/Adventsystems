@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyAQVNkYJ1FXPCf7PIqTQFjCasMRTWdgX84";
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+const HF_API_KEY = process.env.HF_API_KEY || "AIzaSyAQVNkYJ1FXPCf7PIqTQFjCasMRTWdgX84";
+const ai = new GoogleGenAI({ apiKey: HF_API_KEY });
 
 export async function getChatResponse(message: string): Promise<string> {
   try {

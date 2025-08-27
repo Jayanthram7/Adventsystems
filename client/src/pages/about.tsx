@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { Users, BadgeCheck, PhoneCall, Star, Award , Handshake , Boxes , MessageSquareQuote , GraduationCap} from "lucide-react";
+import { Users, BadgeCheck, PhoneCall, Star, Award, Handshake, Boxes, MessageSquareQuote, GraduationCap } from "lucide-react";
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useLocation } from "wouter";
 import { User } from "lucide-react";
@@ -22,53 +22,174 @@ import Image12 from "./12.jpg";
 /* About Page */
 export default function About() {
   const [, setLocation] = useLocation();
+  const advancedSolutions = [
+    {
+      title: "AI-Powered Assistant",
+      desc: "Your intelligent companion for accounting concepts and practical guidance, helping you and your team make the most of Tally’s Power of Simplicity."
+    },
+    {
+      title: "Data Integrations",
+      desc: "Seamless connectivity with third-party applications using Excel, API, JSON, and XML-based data interchange solutions."
+    },
+    {
+      title: "Data Optimization Expertise",
+      desc: "Advanced techniques to manage high volumes of data without compromising Tally’s power, speed, accuracy, or reliability."
+    },
+    {
+      title: "Distributed Accounting Solutions",
+      desc: "Professional management of accounting for a single entity across geographically dispersed branches and warehouses, powered by cloud-based Tally on AWS (Linux) as well as Windows-based solutions from trusted vendors."
+    },
+    {
+      title: "Centralized & Consolidated Reporting",
+      desc: "Generate centralized and grouped results and reports for a common entity, even when accounts are maintained as separate companies in Tally."
+    },
+    {
+      title: "Reverse Grouping Solutions",
+      desc: "A unique alternative to Tally’s standard Group Company feature, enabling seamless auto data creation in a Group → Companies structure, eliminating manual work and enhancing automation."
+    },
+    {
+      title: "Enhanced Manufacturing Solutions",
+      desc: "End-to-end handling of the manufacturing process, from order receipt to timely delivery, with a strong focus on material management and cost optimization."
+    },
+    {
+      title: "Digitized Document & Workflow Management",
+      desc: "Synchronized handling of documents across organizational activities, combined with approval workflows fully integrated into Tally’s accounting system."
+    },
+    {
+      title: "AI-Enabled Training Center",
+      desc: "A fully functional training hub with AI-powered tools to deliver professional-level training for owners, managers, and employees."
+    },
+    {
+      title: "Connected Business Empowerment",
+      desc: "Helping organizations harness Tally’s Connected GST, Connected Banking, and Connected Accounting features to stay competitive in India &amp; globally."
+    }
+  ];
+  
+  const coreSolutions = [
+    {
+      title: "Tally Implementation & Customization",
+      desc: "Tailored setups to match your business processes."
+    },
+    {
+      title: "Connected GST & Compliance Solutions",
+      desc: "Stay updated and compliant with minimal effort."
+    },
+    {
+      title: "Connected Banking & Automation",
+      desc: "Simplify payments, reconciliations, and cash flow management."
+    },
+    {
+      title: "Business Dashboards & Reporting",
+      desc: "Real-time insights for faster, smarter decisions."
+    },
+    {
+      title: "WhatsApp Communication Integration",
+      desc: "Engage and connect with customers seamlessly."
+    },
+    {
+      title: "Inventory & Manufacturing Solutions",
+      desc: "Streamline operations across trade and industry verticals."
+    },
+    {
+      title: "Training & Capacity Building",
+      desc: "Empowering teams to maximize the value of Tally."
+    }
+  ];
 
   const solutions = [
     {
-      title: "Tally on AWS",
-      desc:
-        "We have successfully provided and supported Tally Prime Server on AWS for up to 64 users, running flawlessly for 3+ years.",
+      title: "AI-Powered Assistant",
+      desc: "Your intelligent companion for accounting concepts and practical guidance, helping you and your team make the most of Tally’s Power of Simplicity."
     },
     {
-      title: "Digital Signature in Tally with approval",
-      desc:
-        "Custom TallyPrime solution enabling Digital Signatures with approval workflow — deployed at 100+ customer sites.",
+      title: "Data Integrations",
+      desc: "Seamless connectivity with third-party applications using Excel, API, JSON, and XML-based data interchange solutions."
     },
     {
-      title: "Excel to Tally Integrations",
-      desc: "Automated data import from Excel into Tally for faster, error-free operations.",
+      title: "Data Optimization Expertise",
+      desc: "Advanced techniques to manage high volumes of data without compromising Tally’s power, speed, accuracy, or reliability."
     },
     {
-      title: "School Fees & Student Management",
-      desc:
-        "Trusted by 40+ schools in the region for fees collection and student management.",
+      title: "Distributed Accounting Solutions",
+      desc: "Professional management of accounting for a single entity across geographically dispersed branches and warehouses, powered by cloud-based Tally on AWS (Linux) as well as Windows-based solutions from trusted vendors."
     },
     {
-      title: "Manufacturing & Material Planning",
-      desc:
-        "Custom solutions for engineering industries covering manufacturing processes and material planning.",
+      title: "Centralized &amp; Consolidated Reporting",
+      desc: "Solutions for generating centralized and grouped results and reports for a common entity, even when accounts are maintained as separate companies in Tally."
     },
+    {
+      title: "Reverse Grouping Solutions",
+      desc: "An advanced alternative to Tally’s standard Group Company feature, enabling seamless auto data creation in a Group → Companies structure, rather than the traditional Companies → Group format, eliminating manual work and enhancing data automation."
+    },
+    {
+      title: "Enhanced Manufacturing Solutions",
+      desc: "Comprehensive handling of the manufacturing process, from receipt of sales orders to timely delivery, with strong focus on material management and cost optimization across every stage of production."
+    },
+    {
+      title: "Digitized Document &amp; Workflow Management",
+      desc: "Improved, synchronized handling of documents at every stage of organizational activity, combined with workflow-based approval processes that fully integrate with Tally’s accounting system."
+    },
+    {
+      title: "AI-Enabled Training Center",
+      desc: "A dedicated, fully functional training hub equipped with the latest AI-powered tools to deliver professional-level training for owners, managers, and employees. Focused on Tally’s latest features and applications, enabling smarter decision-making across all levels of the organization."
+    },
+    {
+      title: "Connected Business Empowerment",
+      desc: "Helping customer organizations understand and harness the full potential of Tally’s powerful Connected features — including Connected GST, Connected Banking, and Connected Accounting — to stay competitive in today’s rapidly growing connected business environment, both nationally and globally."
+    },
+    {
+      title: "Tally Implementation &amp; Customization",
+      desc: "Tailored setups to match your business processes."
+    },
+    {
+      title: "Connected GST &amp; Compliance Solutions",
+      desc: "Stay updated and compliant with minimal effort."
+    },
+    {
+      title: "Connected Banking &amp; Automation",
+      desc: "Simplify payments, reconciliations, and cash flow management."
+    },
+    {
+      title: "Business Dashboards &amp; Reporting",
+      desc: "Real-time insights for faster, smarter decisions."
+    },
+    {
+      title: "WhatsApp Communication Integration",
+      desc: "Engage and connect with customers seamlessly."
+    },
+    {
+      title: "Inventory &amp; Manufacturing Solutions",
+      desc: "Streamline operations across trade and industry verticals."
+    },
+    {
+      title: "Training &amp; Capacity Building",
+      desc: "Empowering teams to maximize the value of Tally."
+    }
   ];
 
+  const [showAllSolutions, setShowAllSolutions] = useState(false);
+  const displayedSolutions = showAllSolutions ? advancedSolutions : advancedSolutions.slice(0, 5);
+  const displayed1Solutions = showAllSolutions ? coreSolutions : coreSolutions.slice(0, 5);
+
   const whyUs = [
-    {
-      Icon: BadgeCheck,
-      title: "Expertise",
-      desc:
-        "One of the most experienced Tally teams in the region. Decades of hands-on experience across implementations and automation.",
-      color: "text-tally-orange",
-    },
     {
       Icon: Users,
       title: "Customer-Centric",
       desc:
-        "We listen, learn, and deliver features that matter. Tally Prime Server, Tally on AWS, and more.",
+        "A legacy-driven approach to nurturing customer relationships, with a strong emphasis on trust, continuity, and lasting value.",
       color: "text-blue-600",
+    },
+    {
+      Icon: BadgeCheck,
+      title: "Expertise",
+      desc:
+        "The region’s most experienced Tally team, with decades of proven expertise in implementations and automation across diverse sectors of Trade and Industry",
+      color: "text-tally-orange",
     },
     {
       Icon: PhoneCall,
       title: "Reliable Support",
-      desc: "Fast, responsive assistance whenever you need it.",
+      desc: "Always available, fast, and dependable assistance — ensuring your business runs seamlessly,without disruption.",
       color: "text-tally-blue",
     },
     {
@@ -79,8 +200,8 @@ export default function About() {
           {...props}
         />
       ),
-      title: "Third-Party Integrations",
-      desc: "WhatsApp on Tally, Excel-to-Tally templates, dashboards, and more.",
+      title: "Inovation",
+      desc: "Constantly evolving with technology to deliver smarter solutions, empowering businesses to stay ahead in a dynamic market",
       color: "",
     },
   ];
@@ -158,10 +279,16 @@ export default function About() {
           </h1>
 
           <p className="text-[1.05rem] sm:text-lg text-blue-950/85 max-w-4xl mx-auto leading-relaxed text-justify">
-            <strong>Advent Systems</strong>, located in Coimbatore, Tamilnadu, is a <strong>5* Certified Partner</strong> of Tally.
-            We’ve been associated with Tally since 1989, providing Sales, Service, Support, and Training
-            for over three decades. Led by <strong>Mr. Chinnaswamt Kanakaraj</strong>, our seasoned team brings <strong>35+ years </strong>
-            of experience across Tally Prime and vertical solutions, supporting 3,500+ customers.
+          <strong>Advent Systems</strong> is a<strong> 5* Certified Partner </strong>of Tally. Promoted and headed
+by <strong>Mr.Chinnaswamy Kanakaraj</strong> in the early 1980s, Advent is one of the
+earliest IT / ITES organizations in the region. As one of the earliest partners
+of Tally in the entire country, Advent and its Team is engaged and excel in
+Sales, Support, Training and Customization of Tally for over three decades.
+With a seasoned team, Advent brings <strong>50+</strong> years of experience across Tally
+Prime and vertical solutions, supporting over 3,500+ customers of Tally in
+the region. Team Advent is engaged in enabling advancements in the latest
+AI technology to its and Sales and Service functions for the benefit of its
+customers.
           </p>
 
           {/* CTAs */}
@@ -186,43 +313,42 @@ export default function About() {
             </button>
 
             <button
-  onClick={() => setLocation("/ai")}
-  className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
-             bg-white/90 text-blue-800 border border-blue-200 font-semibold shadow 
-             hover:bg-white active:scale-[0.99] transition"
-  title="Explore Solutions"
->
-  <span>Tally Prime AI Assistant</span>
-  <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
-    <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-  </svg>
+              onClick={() => setLocation("/ai")}
+              className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
+                       bg-white/90 text-blue-800 border border-blue-200 font-semibold shadow 
+                       hover:bg-white active:scale-[0.99] transition"
+              title="Explore Solutions"
+            >
+              <span>Tally Prime AI Assistant</span>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
+                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+              </svg>
 
-  {/* Red badge */}
-  <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white 
-                   text-[10px] leading-[18px] text-center shadow">
-    New
-  </span>
-</button>
+              {/* Red badge */}
+              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white 
+                             text-[10px] leading-[18px] text-center shadow">
+                New
+              </span>
+            </button>
 
-<button
-  onClick={() => setLocation("/learn")}
-  className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
-             bg-white/90 text-green-600 border border-green-500 font-semibold shadow 
-             hover:bg-white active:scale-[0.99] transition"
-  title="Explore Solutions"
->
-  <span>Learn Tally </span>
-  <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
-    <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-  </svg>
+            <button
+              onClick={() => setLocation("/learn")}
+              className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
+                       bg-white/90 text-green-600 border border-green-500 font-semibold shadow 
+                       hover:bg-white active:scale-[0.99] transition"
+              title="Explore Solutions"
+            >
+              <span>Learn Tally </span>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
+                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+              </svg>
 
-  {/* Red badge */}
-  <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white 
-                   text-[10px] leading-[18px] text-center shadow">
-    Popular Choice
-  </span>
-</button>
-
+              {/* Red badge */}
+              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white 
+                             text-[10px] leading-[18px] text-center shadow">
+                Popular Choice
+              </span>
+            </button>
           </div>
         </div>
 
@@ -242,225 +368,277 @@ export default function About() {
 
       {/* Awards and Accolades: continuous loop */}
       <section className="relative py-10 sm:py-16 overflow-hidden">
-  <AccoladesBackground />
-  <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Centered header */}
-    <div className="flex items-center justify-center gap-3 mb-2">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-        <Award className="w-5 h-5" />
-      </span>
-      <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-blue-900">
-        Awards and Accolades
-      </h2>
-    </div>
-
-    {/* Centered tagline */}
-    <p className="text-blue-900/80 text-sm sm:text-base mb-6 sm:mb-8 text-center">
-      These trophies and shields are not just achievements — they are a symbol of lifetime excellence and commitment to the customers.
-    </p>
-
-    <SingleLayerFilmstripWithGap
-      images={accoladeImages}
-      heightClass="h-[190px] sm:h-[220px] md:h-[250px] lg:h-[290px] xl:h-[330px]"
-      gapClass="gap-1"
-      speedPxPerSec={60}
-      scaleOnHover="hover:scale-[1.01]"
-    />
-  </div>
-</section>
-<section className="relative py-20 text-center overflow-hidden bg-gradient-to-b from-blue-50 to-white">
-  <WhyBackground />
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Icon + Heading (Lucide) */}
-    <div className="flex items-center justify-center gap-3 mb-2">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-        <Handshake className="w-5 h-5" />
-      </span>
-      <h2 className="text-3xl sm:text-4xl font-extrabold">
-        Why <span className="text-blue-600">Choose Us?</span>
-      </h2>
-    </div>
-
-    {/* Tagline */}
-    <p className="text-blue-900/80 text-sm sm:text-base mb-12">
-      Trusted expertise, customer-first delivery, and responsive support—so businesses can focus on growth, not hassles.
-    </p>
-
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-      {whyUs.map(({ Icon, title, desc, color }, idx) => (
-        <div
-          key={idx}
-          className="group bg-white/90 border border-gray-100 p-8 rounded-2xl shadow-md hover:shadow-2xl hover:border-blue-200 transition transform hover:-translate-y-1 backdrop-blur-sm"
-        >
-          <div className="mx-auto mb-4 h-12 w-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition">
-            <Icon className={`w-6 h-6 ${color}`} />
+        <AccoladesBackground />
+        <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Centered header */}
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <Award className="w-5 h-5" />
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-blue-900 mb-1">
+              Awards and Accolades
+            </h2>
           </div>
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
-          <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
+
+          {/* Centered tagline */}
+          <p className="text-blue-900/80 text-sm sm:text-base mb-1 sm:mb-1 mt-1 text-center">
+            These are not just trophies and shields of our achievements.
+          </p>
+          <p className="text-blue-900/80 text-sm sm:text-base mb-6 sm:mb-8 text-center">
+            These are consistent recognition by Tally of our commitment to the Brand,
+            Product and support services to the customers.
+          </p>
+
+          <SingleLayerFilmstripWithGap
+            images={accoladeImages}
+            heightClass="h-[190px] sm:h-[220px] md:h-[250px] lg:h-[290px] xl:h-[330px]"
+            gapClass="gap-1"
+            speedPxPerSec={60}
+            scaleOnHover="hover:scale-[1.01]"
+          />
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
+      {/* Why Choose Us */}
+      <section className="relative py-20 text-center overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+        <WhyBackground />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Icon + Heading (Lucide) */}
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <Handshake className="w-5 h-5" />
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              Why <span className="text-blue-600">Choose Us?</span>
+            </h2>
+          </div>
 
+          {/* Tagline */}
+          <p className="text-blue-900/80 text-sm sm:text-base mb-12">
+            "With Trusted Expertise, a Customer-First Approach, Reliable Support, and
+            Innovation powered by the latest technologies — we enable businesses to grow without
+            hassles"
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {whyUs.map(({ Icon, title, desc, color }, idx) => (
+              <div
+                key={idx}
+                className="group bg-white/90 border border-gray-100 p-8 rounded-2xl shadow-md hover:shadow-2xl hover:border-blue-200 transition transform hover:-translate-y-1 backdrop-blur-sm"
+              >
+                <div className="mx-auto mb-4 h-12 w-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition">
+                  <Icon className={`w-6 h-6 ${color}`} />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Solutions */}
       <section id="solutions" className="relative py-12 sm:py-16 bg-white overflow-hidden">
-  <SolutionsBackground />
-  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Icon + Heading */}
-    <div className="flex items-center justify-center gap-3 mb-2">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-        <Boxes className="w-5 h-5" />
-      </span>
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-        Our Ready <span className="text-blue-700">Solutions</span>
-      </h2>
-    </div>
+        <SolutionsBackground />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Icon + Heading */}
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <Boxes className="w-5 h-5" />
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Our Core and <span className="text-blue-700">Advanced Solutions </span>
+            </h2>
+          </div>
 
-    {/* Tagline */}
-    <p className="text-blue-900/80 text-sm sm:text-base text-center mb-12">
-    Modern Solutions to empower your business , at your fingertips with Tally - Power of Simplicity
-    </p>
+          {/* Tagline */}
+          <p className="text-blue-900/80 text-sm sm:text-base text-center mb-12">
+            Modern solutions designed to empower your business, built on Tally’s Power of Simplicity
+            — making them easy, effective, and ready at your fingertips
+          </p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 ml-2 mb-2 pl-4 pb-2">
+               <span className="text-blue-700">Core Solutions</span>
+            </h1>
 
-    <div className="relative">
-      {/* Left-side vertical line */}
-      <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-300 via-blue-500 to-blue-300" />
-      {/* Cards */}
-      <div className="ml-10 sm:ml-16 space-y-8">
-        {solutions.map((item, idx) => (
-          <TimelineItemRight key={idx} item={item} />
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-{/* Customer Experiences */}
-<section className="relative py-10 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
-  <TestimonialsBackground />
+          <div className="relative">
+            {/* Left-side vertical line */}
+            <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-300 via-blue-500 to-blue-300" />
+            {/* Cards */}
+            <div className="ml-10 sm:ml-16 space-y-4">
+              {displayedSolutions.map((item, idx) => (
+                <TimelineItemRight key={idx} item={item} />
+              ))}
+            </div>
+          </div>
 
-  {/* Decorative SVG behind heading */}
-  <svg
-    aria-hidden="true"
-    className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 w-[720px] max-w-[85vw] opacity-25"
-    viewBox="0 0 720 180"
-    fill="none"
-  >
-    <defs>
-      <linearGradient id="testi-swoosh" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#BFDBFE" stopOpacity="0.35" />
-        <stop offset="100%" stopColor="#93C5FD" stopOpacity="0.0" />
-      </linearGradient>
-    </defs>
-    <path d="M0,120 C180,60 360,160 540,110 C620,90 700,100 720,95 L720,180 L0,180 Z" fill="url(#testi-swoosh)" />
-  </svg>
+          {solutions.length > 5 && (
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setShowAllSolutions(!showAllSolutions)}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
+                       bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
+                       font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
+                       active:scale-[0.99] transition relative overflow-hidden"
+              >
+                <span className="relative">
+                  {showAllSolutions ? 'Show Less' : 'View More'}
+                </span>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+          )}
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 ml-2 mb-2 pl-4 pb-2 pt-4 mt-4">
+               <span className="text-blue-700">Advanced Solutions</span>
+            </h1>
+          <div className="relative">
+            {/* Left-side vertical line */}
+            <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-300 via-blue-500 to-blue-300" />
+            {/* Cards */}
+            <div className="ml-10 sm:ml-16 space-y-4">
+              {displayed1Solutions.map((item, idx) => (
+                <TimelineItemRight key={idx} item={item} />
+              ))}
+            </div>
+          </div>
 
-  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Icon + Heading */}
-    <div className="flex items-center justify-center gap-3 mb-2">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-        <MessageSquareQuote className="w-5 h-5" />
-      </span>
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-center">
-        Customer <span className="text-blue-600">Experiences</span>
-      </h2>
-    </div>
-
-    {/* Tagline */}
-    <p className="text-blue-900/80 text-sm sm:text-base text-center mb-12">
-      Real stories of measurable impact—from smoother operations to faster closings and reliable compliance.
-    </p>
-
-    <TestimonialCarousel
-      items={testimonials}
-      renderItem={(t) => <TestimonialCard key={t.name} {...t} />}
-    />
-  </div>
-</section>
-
-
-      {/* Why Choose Us */}
+          {solutions.length > 5 && (
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setShowAllSolutions(!showAllSolutions)}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
+                       bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
+                       font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
+                       active:scale-[0.99] transition relative overflow-hidden"
+              >
+                <span className="relative">
+                  {showAllSolutions ? 'Show Less' : 'View More'}
+                </span>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
       
+
+      {/* Customer Experiences */}
+      <section className="relative py-10 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
+        <TestimonialsBackground />
+
+        {/* Decorative SVG behind heading */}
+        <svg
+          aria-hidden="true"
+          className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 w-[720px] max-w-[85vw] opacity-25"
+          viewBox="0 0 720 180"
+          fill="none"
+        >
+          <defs>
+            <linearGradient id="testi-swoosh" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#BFDBFE" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#93C5FD" stopOpacity="0.0" />
+            </linearGradient>
+          </defs>
+          <path d="M0,120 C180,60 360,160 540,110 C620,90 700,100 720,95 L720,180 L0,180 Z" fill="url(#testi-swoosh)" />
+        </svg>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Icon + Heading */}
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <MessageSquareQuote className="w-5 h-5" />
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-center">
+              Customer <span className="text-blue-600">Experiences</span>
+            </h2>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-blue-900/80 text-sm sm:text-base text-center mb-12">
+            Real stories of measurable impact—from smoother operations to faster closings and reliable compliance.
+          </p>
+
+          <TestimonialCarousel
+            items={testimonials}
+            renderItem={(t) => <TestimonialCard key={t.name} {...t} />}
+          />
+        </div>
+      </section>
 
       {/* Tally Learn Promo */}
       <section className="relative py-10 sm:py-14 bg-white overflow-hidden">
-  <PromoBackground />
+        <PromoBackground />
 
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* OUTSIDE: Icon + Heading */}
-    <div className="flex items-center justify-center gap-3 mb-2">
-  <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-    <GraduationCap className="w-5 h-5" />
-  </span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* OUTSIDE: Icon + Heading */}
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <GraduationCap className="w-5 h-5" />
+            </span>
 
-  {/* Keep text next to icon and control wrapping */}
-  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-blue-900">
-    <span className="inline-block">
-      Explore Tally Learn by Global IT Academy,
-    </span>{" "}
-    <span className="inline-block">
-      the Tally education subsidiary of Advent Systems
-    </span>
-  </h2>
-</div>
+            {/* Keep text next to icon and control wrapping */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-blue-900">
+              <span className="inline-block">
+                Explore Tally Learn by Global IT Academy,
+              </span>{" "}
+              <span className="inline-block">
+                the Tally education subsidiary of Advent Systems
+              </span>
+            </h2>
+          </div>
 
+          {/* OUTSIDE: Tagline */}
+          <p className="text-blue-900/80 text-sm sm:text-base text-center mb-8 sm:mb-10 inline-block ml-14">
+            Learning never stops — especially when solutions are at your fingertips.
+          </p>
 
-    {/* OUTSIDE: Tagline */}
-    <p className="text-blue-900/80 text-sm sm:text-base text-center mb-8 sm:mb-10 inline-block ml-14">
-      Learning never stops — especially when solutions are at your fingertips.
-    </p>
+          {/* Banner (separate block) */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white shadow-2xl">
+            <div className="px-6 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-10 text-center">
+              {/* INSIDE: Icon next to heading 'Tally Learn' */}
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white">
+                  <GraduationCap className="w-5 h-5" />
+                </span>
+                <h3 className="text-3xl sm:text-3xl lg:text-5xl font-bold tracking-tight">
+                  Tally Learn
+                </h3>
+              </div>
 
-    {/* Banner (separate block) */}
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 text-white shadow-2xl">
-      <div className="px-6 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-10 text-center">
-        {/* INSIDE: Icon next to heading 'Tally Learn' */}
-        <div className="flex items-center justify-center gap-2 mb-3">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white">
-            <GraduationCap className="w-5 h-5" />
-          </span>
-          <h3 className="text-3xl sm:text-3xl lg:text-5xl font-bold tracking-tight">
-            Tally Learn
-          </h3>
+              {/* Body copy */}
+              <p className="mx-auto max-w-2xl text-base sm:text-lg text-blue-100/90 leading-relaxed">
+                Explore Tally Learn, the learning subsidiary of Advent Systems, offering practical, bite-sized modules and hands-on projects designed to empower professionals with essential Tally skills for business success.
+              </p>
+
+              <div className="mt-6 sm:mt-8">
+                <button
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    setTimeout(() => setLocation("/learn"), 300);
+                  }}
+                  className="inline-flex items-center gap-2 bg-white text-blue-800 hover:bg-blue-50 font-semibold rounded-full px-6 py-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/40 hover:shadow-xl hover:scale-105"
+                >
+                  Register for Tally Learn
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Decorative blur orbs */}
+            <div className="absolute -top-6 -left-6 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
+            <div className="absolute -bottom-8 -right-10 w-28 h-28 bg-white/10 rounded-full blur-2xl" />
+          </div>
         </div>
-
-        {/* Body copy */}
-        <p className="mx-auto max-w-2xl text-base sm:text-lg text-blue-100/90 leading-relaxed">
-          Explore Tally Learn, the learning subsidiary of Advent Systems, offering practical, bite-sized modules and hands-on projects designed to empower professionals with essential Tally skills for business success.
-        </p>
-
-        <div className="mt-6 sm:mt-8">
-          <button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-              setTimeout(() => setLocation("/learn"), 300);
-            }}
-            className="inline-flex items-center gap-2 bg-white text-blue-800 hover:bg-blue-50 font-semibold rounded-full px-6 py-3 shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/40 hover:shadow-xl hover:scale-105"
-          >
-            Register for Tally Learn
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                fillRule="evenodd"
-                d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Decorative blur orbs */}
-      <div className="absolute -top-6 -left-6 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
-      <div className="absolute -bottom-8 -right-10 w-28 h-28 bg-white/10 rounded-full blur-2xl" />
-    </div>
-  </div>
-</section>
-
-
-
-      {/* Customer Experiences */}
-      
-
+      </section>
 
       <Footer />
     </div>
@@ -695,7 +873,6 @@ function GlobalBackgroundDecor() {
   return null;
 }
 
-/* Clean hero background with gradient mesh + angled wave + subtle dots + extra subtle wave layer */
 function HeroBackgroundUpgradedWithWaves() {
   return (
     <>

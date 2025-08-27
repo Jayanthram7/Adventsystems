@@ -217,15 +217,15 @@ export default function Header() {
 
   // Options for Issue select
   const issueOptions = [
-    "License",
-    "Data",
-    "Print/Share",
+    "License – Reactivate / Connectivity / Update / Others",
+    "Data – Path / Error / Sync / Import / Export / Split / Integration ",
+    "Print/Share ",
     "E-Way Bill / E-Invoice",
-    "GST",
-    "AWS",
+    "GST - Entry / Error / Upload / Filing / Doubts",
+    "Tally on AWS – Connect / Renew / Error / Backup / Usage",
     "Customization",
-    "NEW Pack",
-    "TSS",
+    "License - New / Upgrade / Change Email ",
+    "TSS - Renewal / Update",
   ];
 
   return (
@@ -282,7 +282,7 @@ export default function Header() {
           </div>
 
           <div className="hidden lg:flex items-center justify-center flex-grow">
-            <img src={logo} alt="TallyPrime Logo" className="w-18 h-8" />
+            <img src={logo} alt="TallyPrime Logo" className="w-18 h-10" />
           </div>
 
           <div className="flex items-center space-x-4">
@@ -378,7 +378,7 @@ export default function Header() {
 
                 {/* Issue category select */}
                 <div className="mb-1">
-                  <label className="block text-sm font-medium mb-1">Issue</label>
+                  <label className="block text-sm font-medium mb-1">Select Support Function</label>
                   <select
                     value={formData.issue}
                     onChange={(e) => setFormData({ ...formData, issue: e.target.value })}
@@ -483,6 +483,20 @@ export default function Header() {
                 className="block py-2 px-2 hover:text-tally-orange transition-colors duration-300"
               >
                 Learn Tally with Us
+              </a>
+            </li>
+            <li>
+              <a
+                href="/career"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  setMobileMenuOpen(false);
+                  setTimeout(() => setLocation("/career"), 300);
+                }}
+                className="block py-2 px-2 hover:text-tally-orange transition-colors duration-300"
+              >
+                Careers
               </a>
             </li>
             <li>

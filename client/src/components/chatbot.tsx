@@ -112,7 +112,7 @@ What would you like to know today?`,
   const handleSendMessage = () => {
     const message = inputValue.trim();
     if (!message || chatMutation.isPending) return;
-
+  
     const userMessage: Message = {
       id: `user_${Date.now()}`,
       message,
@@ -121,13 +121,26 @@ What would you like to know today?`,
     };
     setMessages(prev => [...prev, userMessage]);
     setInputValue("");
-    // ensure panel is open when sending
     setIsMinimized(false);
     setIsOpen(true);
-
-    // call api
+  
+    // 👉 Custom check for "charges" or "price"
+    if (/charges?|price/i.test(message)) {
+      const customReply: Message = {
+        id: `custom_${Date.now()}`,
+        message:
+          "As an Assistant I can help you with TallyPrime related usage queries. For details regarding charges and prices please contact: Advent Systems 9842276297",
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, customReply]);
+      return; // stop here, don’t call API
+    }
+  
+    // Otherwise call API
     chatMutation.mutate(message);
   };
+  
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
