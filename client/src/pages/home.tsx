@@ -121,14 +121,7 @@ export default function Home() {
                     <div className="text-sm text-gray-600 font-medium">Available</div>
                     <div className="text-xs text-gray-500 mt-1">Always ready to help</div>
                   </div>
-                  <div className="text-center group">
-                    <div className="bg-gradient-to-br from-tally-orange to-orange-500 text-blue-800 border w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Target className="w-8 h-8" /> {/* Adjust size as needed */}
-                    </div>
-                    <div className="text-lg font-bold text-tally-gray">95%</div>
-                    <div className="text-sm text-gray-600 font-medium">Accuracy</div>
-                    <div className="text-xs text-gray-500 mt-1">Reliable responses</div>
-                  </div>
+                  
                   <div className="text-center group">
                     <div className="text-white border w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-xl font-bold">⚡</span>
@@ -136,6 +129,14 @@ export default function Home() {
                     <div className="text-lg font-bold text-tally-gray">Instant</div>
                     <div className="text-sm text-gray-600 font-medium">Response</div>
                     <div className="text-xs text-gray-500 mt-1">Realtime Support</div>
+                  </div>
+                  <div className="text-center group">
+                    <div className="bg-gradient-to-br from-tally-orange to-orange-500 text-blue-800 border w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Target className="w-8 h-8" /> {/* Adjust size as needed */}
+                    </div>
+                    <div className="text-lg font-bold text-tally-gray">In-house</div>
+                    <div className="text-sm text-gray-600 font-medium">Development</div>
+                    <div className="text-xs text-gray-500 mt-1">Developed by Team Advent</div>
                   </div>
                 </div>
               </div>
