@@ -11,7 +11,8 @@ import {
   ShieldCheck,
   ChevronRight,
   Sparkles,
-  Brain
+  Brain ,
+  ChartArea
 } from "lucide-react";
 
 type FormData = {
@@ -253,8 +254,8 @@ export default function Products() {
               accent="blue"
             />
             <ProductCard
-              icon={Cloud}
-              title="Cloud Solutions & Compliance"
+              icon={ChartArea}
+              title="Statutory Solutions & Compliance"
               description="Real-time data validation for GST, TDS, and regulatory compliance at scale."
               accent="green"
             />

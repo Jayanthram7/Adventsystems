@@ -129,7 +129,7 @@ What would you like to know today?`,
       const customReply: Message = {
         id: `custom_${Date.now()}`,
         message:
-          "As an Assistant I can help you with TallyPrime related usage queries. For details regarding charges and prices please contact: Advent Systems 9842276297",
+          "As an assistant, support is available for TallyPrime usage and how-to queries. For commercial details, please contact Advent Systems at 9842276297 or mail us at adventsystems@gmail.com",
         isUser: false,
         timestamp: new Date(),
       };

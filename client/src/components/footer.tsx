@@ -19,6 +19,7 @@ export default function Footer() {
               <div className={`py-1 rounded mr-3 `}>
                 <span className="text-tally-blue font-bold bg-transparent text-3xl ">Advent Systems </span>
               </div>
+              
             </div>
             <p className="text-white mb-6 leading-relaxed">
               Empowering businesses with intelligent TallyPrime solutions and AI-powered assistance. 
@@ -58,6 +59,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="space-y-3">
+            
               <div className="flex items-center space-x-3 text-white hover:text-white transition-colors">
                 <Phone className="h-4 w-4 flex-shrink-0" />
                 <span className="text-sm">+91 98422 76297 / +91 99655 73231</span>

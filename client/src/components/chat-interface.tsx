@@ -24,6 +24,20 @@ export default function ChatInterface() {
   const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // 1) Pricing/commercial guard: simple client-side detector
+  const PRICING_REPLY =
+    "As an assistant, support is available for TallyPrime usage and how-to queries. For pricing and commercial details, please contact Advent Systems at 9842276297 or mail us at adventsystems@gmail.com";
+  const isPricingQuery = (text: string) => {
+    const t = text.toLowerCase();
+    // add/adjust keywords as needed
+    const keywords = [
+      "price", "pricing", "cost", "charges", "charge", "fee", "fees",
+      "quote", "quotation", "plan", "plans", "subscription", "rate", "rates",
+      "how much", "payment", "commercial", "bill", "billing", "invoice amount"
+    ];
+    return keywords.some(k => t.includes(k));
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -34,7 +48,6 @@ export default function ChatInterface() {
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      // Add welcome message when chat opens
       const welcomeMessage: Message = {
         id: `welcome_${Date.now()}`,
         message: `Welcome to TallyPrime Assistant! I'm here to help you with:
@@ -51,7 +64,7 @@ What would you like to know today?`,
       };
       setMessages([welcomeMessage]);
     }
-  }, [isOpen]);
+  }, [isOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const chatMutation = useMutation({
     mutationFn: async (message: string): Promise<ChatResponse> => {
@@ -82,6 +95,16 @@ What would you like to know today?`,
     },
   });
 
+  const addAssistantMessage = (text: string) => {
+    const aiMessage: Message = {
+      id: `ai_${Date.now()}`,
+      message: text,
+      isUser: false,
+      timestamp: new Date(),
+    };
+    setMessages(prev => [...prev, aiMessage]);
+  };
+
   const handleSendMessage = () => {
     const message = inputValue.trim();
     if (!message || chatMutation.isPending) return;
@@ -95,6 +118,12 @@ What would you like to know today?`,
     };
     setMessages(prev => [...prev, userMessage]);
     setInputValue("");
+
+    // 2) Intercept pricing/commercial queries BEFORE API call
+    if (isPricingQuery(message)) {
+      addAssistantMessage(PRICING_REPLY);
+      return;
+    }
 
     // Send to API
     chatMutation.mutate(message);
@@ -156,11 +185,13 @@ What would you like to know today?`,
                 <p className="text-gray-700 text-sm">To enable GST in TallyPrime: Press F11 (Features) → Taxation → Select Enable Goods and Services Tax (GST) and choose Yes → Fill in the relevant information for your GST registration → Ctrl+A to Save. </p>
               </div>
             </div>
+
             <div className="flex items-start space-x-3 justify-end group">
               <div className="bg-tally-blue text-white rounded-lg p-3 max-w-xs transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:border hover:border-blue-300 cursor-pointer">
                 <p className="text-sm">How do I create a sales voucher?</p>
               </div>
             </div>
+
             <div className="flex items-start space-x-3 group">
               <div className="w-8 h-8 bg-tally-blue rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:shadow-lg group-hover:scale-105">
                 <Bot className="h-4 w-4 text-white" />
@@ -170,8 +201,6 @@ What would you like to know today?`,
               </div>
             </div>
           </div>
-
-          
 
           {/* Start Chatting Button */}
           <div className="p-6 border-t border-gray-100 flex-shrink-0 z-9999" >
@@ -189,10 +218,10 @@ What would you like to know today?`,
           </div>
         </div>
       </div>
+
       {/* Full Screen Chat Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-[9999999999999999] bg-white flex flex-col pt-0 md:pt-[40px]">
-
           {/* Chat Header */}
           <div className="from-tally-blue to-blue-600 px-6 py-4 flex items-center justify-between flex-shrink-0 bg-[#0f34a3]">
             <div className="flex items-center justify-center space-x-3">
@@ -228,12 +257,14 @@ What would you like to know today?`,
                     <Bot className="h-5 w-5 text-white" />
                   </div>
                 )}
-                <div className={`rounded-lg p-4 max-w-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] shadow-md ${
-                  message.isUser 
-                    ? 'bg-tally-blue text-white hover:bg-blue-700 hover:shadow-lg hover:border hover:border-blue-300' 
-                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-lg hover:border hover:border-gray-200'
-                }`}>
-                  <div 
+                <div
+                  className={`rounded-lg p-4 max-w-2xl transition-all duration-300 cursor-pointer transform hover:scale-[1.02] shadow-md ${
+                    message.isUser 
+                      ? 'bg-tally-blue text-white hover:bg-blue-700 hover:shadow-lg hover:border hover:border-blue-300' 
+                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-lg hover:border hover:border-gray-200'
+                  }`}
+                >
+                  <div
                     className="whitespace-pre-line"
                     dangerouslySetInnerHTML={{
                       __html: message.message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -247,7 +278,7 @@ What would you like to know today?`,
                 )}
               </div>
             ))}
-            
+
             {/* Loading Indicator */}
             {chatMutation.isPending && (
               <div className="flex items-start space-x-3 group animate-pulse">

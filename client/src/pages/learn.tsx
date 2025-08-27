@@ -10,6 +10,7 @@ import TallyCertification from "./TallyCertification.png";
 import TallyGST from "./TallyGST.png";
 import TallyOffice from "./OfficeAutomation.png";
 import TallyPayroll from "./Payroll.png";
+import AllCourses from "./image.png";
 
 // Academy/gallery images
 import Acad1 from "./academy1.jpg";
@@ -114,7 +115,7 @@ export default function TallyLearn() {
     // New “View all courses” card linking externally
     {
       title: "View all courses",
-      img: null as any,
+      img: AllCourses,
       description: "Explore all Tally Education offline courses on the official site.",
       level: "All Levels",
       link: "https://tallyeducation.com/tepl/offline-courses/",

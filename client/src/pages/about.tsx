@@ -168,8 +168,8 @@ export default function About() {
   ];
 
   const [showAllSolutions, setShowAllSolutions] = useState(false);
-  const displayedSolutions = showAllSolutions ? advancedSolutions : advancedSolutions.slice(0, 5);
-  const displayed1Solutions = showAllSolutions ? coreSolutions : coreSolutions.slice(0, 5);
+  const displayedSolutions = showAllSolutions ? advancedSolutions : advancedSolutions.slice(0, 6);
+  const displayed1Solutions = showAllSolutions ? coreSolutions : coreSolutions.slice(0, 6);
 
   const whyUs = [
     {
@@ -200,7 +200,7 @@ export default function About() {
           {...props}
         />
       ),
-      title: "Inovation",
+      title: "Innovation",
       desc: "Constantly evolving with technology to deliver smarter solutions, empowering businesses to stay ahead in a dynamic market",
       color: "",
     },
@@ -254,117 +254,156 @@ export default function About() {
       <Header />
 
       {/* Hero / About - Upgraded visuals and CTAs with subtle waves + justified text */}
-      <section className="relative pt-20 pb-16 overflow-hidden">
-        <HeroBackgroundUpgradedWithWaves />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Partner Pill */}
-          <div className="inline-flex items-center gap-2 bg-white/85 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-blue-200 shadow-sm">
-            <span className="inline-flex h-2 w-2 rounded-full bg-blue-600" />
-            <span className="text-blue-800 font-semibold text-xs sm:text-sm">
-              Advent Systems — 5 Star Certified Partner of Tally
-            </span>
-          </div>
+      <section className="relative isolate overflow-hidden pt-20 pb-20">
+  {/* Background: gradient + soft mesh + grid + accent rings + bottom wave */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-white to-white" />
+    <div className="absolute inset-0 [background:radial-gradient(60rem_48rem_at_50%_-12%,rgba(30,64,175,0.12),transparent_60%)]" />
+    <div className="absolute inset-0 opacity-[0.08] [mask-image:radial-gradient(80rem_40rem_at_50%_20%,black,transparent)]">
+      <div className="h-full w-full [background-image:linear-gradient(to_right,rgba(2,6,23,.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,.12)_1px,transparent_1px)] [background-size:36px_36px]" />
+    </div>
+    {/* Accent rings */}
+    <svg className="pointer-events-none absolute -top-24 -right-10 w-[520px] opacity-30" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="advent-rings" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#2563eb" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#4f46e5" stopOpacity="0.22" />
+        </linearGradient>
+      </defs>
+      <circle cx="300" cy="300" r="240" stroke="url(#advent-rings)" strokeWidth="1.25" />
+      <circle cx="300" cy="300" r="180" stroke="url(#advent-rings)" strokeWidth="1.25" />
+      <circle cx="300" cy="300" r="120" stroke="url(#advent-rings)" strokeWidth="1.25" />
+    </svg>
+    {/* Bottom wave */}
+    <svg className="absolute bottom-0 left-0 right-0 text-blue-50" viewBox="0 0 1440 80" fill="none" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M0,64L60,69.3C120,75,240,85,360,69.3C480,53,600,11,720,10.7C840,11,960,53,1080,64C1200,75,1320,53,1380,42.7L1440,32L1440,80L1380,80C1320,80,1200,80,1080,80C960,80,840,80,720,80C600,80,480,80,360,80C240,80,120,80,60,80L0,80Z"
+      />
+    </svg>
+  </div>
 
-          {/* Logo */}
-          <div className="mb-6">
-            <img
-              src="https://img1.wsimg.com/isteam/ip/fa4c5394-6dd8-4339-9ac8-0be7e0232d41/ADV-30-New.png/:/cr=t:3.83%25,l:0%25,w:100%25,h:92.34%25/rs=w:984,h:740"
-              alt="Advent Systems Logo"
-              className="mx-auto w-28 sm:w-32 h-auto rounded-xl shadow-lg"
-            />
-          </div>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    {/* Top badge */}
+    <div className="mx-auto w-fit mb-6">
+      <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white/70 px-3 py-1 text-xs font-medium text-blue-900 shadow-sm backdrop-blur">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue-600 animate-pulse" />
+        Trusted Tally Partner since the 1980s
+      </span>
+    </div>
 
-          <h1 className="text-[clamp(2.2rem,5vw,3.6rem)] font-extrabold leading-tight mb-4 text-blue-950">
-            Welcome to <span className="text-blue-700">Advent Systems</span>
-          </h1>
+    {/* Logo */}
+    <div className="mb-6 text-center">
+      <img
+        src="https://img1.wsimg.com/isteam/ip/fa4c5394-6dd8-4339-9ac8-0be7e0232d41/ADV-30-New.png/:/cr=t:3.83%25,l:0%25,w:100%25,h:92.34%25/rs=w:984,h:740"
+        alt="Advent Systems Logo"
+        className="mx-auto w-24 sm:w-28 h-auto rounded-xl shadow-lg ring-1 ring-black/5"
+      />
+    </div>
 
-          <p className="text-[1.05rem] sm:text-lg text-blue-950/85 max-w-4xl mx-auto leading-relaxed text-justify">
-          <strong>Advent Systems</strong> is a<strong> 5* Certified Partner </strong>of Tally. Promoted and headed
-by <strong>Mr.Chinnaswamy Kanakaraj</strong> in the early 1980s, Advent is one of the
-earliest IT / ITES organizations in the region. As one of the earliest partners
-of Tally in the entire country, Advent and its Team is engaged and excel in
-Sales, Support, Training and Customization of Tally for over three decades.
-With a seasoned team, Advent brings <strong>50+</strong> years of experience across Tally
-Prime and vertical solutions, supporting over 3,500+ customers of Tally in
-the region. Team Advent is engaged in enabling advancements in the latest
-AI technology to its and Sales and Service functions for the benefit of its
-customers.
-          </p>
+    {/* Heading + Tagline */}
+    <div className="text-center">
+      <h1 className="mx-auto max-w-4xl text-[clamp(2.4rem,5.2vw,3.6rem)] font-extrabold leading-tight tracking-tight text-blue-950">
+        Welcome to <span className="text-blue-700">Advent Systems</span>
+      </h1>
+      
 
-          {/* CTAs */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6 mt-4 p-6">
-            {/* Primary: Contact Sales (now /products), enhanced style */}
-            <button
-              onClick={() => setLocation("/products")}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
-                     bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
-                     font-semibold shadow-lg shadow-blue-700/25 hover:from-blue-800 hover:via-blue-800 hover:to-blue-700
-                     active:scale-[0.99] transition relative overflow-hidden"
-              title="Services and Solutions offered by Advent Systems"
-            >
-              {/* sheen */}
-              <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
-                <span className="absolute -inset-12 rotate-12 bg-white/10 blur-2xl" />
-              </span>
-              <span>View Solutions</span>
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-90">
-                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-              </svg>
-            </button>
+      {/* Updated smaller multi-paragraph description */}
+      <div className="mx-auto mt-6 max-w-5xl">
+  <div className="group relative rounded-2xl border border-slate-200/70 bg-gradient-to-br from-white/80 to-blue-50/40 p-5 sm:p-6 shadow-sm backdrop-blur transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+    {/* Subtle top highlight */}
+    <span className="pointer-events-none absolute inset-x-6 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/30 to-transparent" />
+    {/* Faint corner glows */}
+    <span className="pointer-events-none absolute -top-2 -left-2 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+    <span className="pointer-events-none absolute -bottom-3 -right-3 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
 
-            <button
-              onClick={() => setLocation("/ai")}
-              className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
-                       bg-white/90 text-blue-800 border border-blue-200 font-semibold shadow 
-                       hover:bg-white active:scale-[0.99] transition"
-              title="Explore Solutions"
-            >
-              <span>Tally Prime AI Assistant</span>
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
-                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-              </svg>
+    {/* Content */}
+    <div className="text-blue-950/85 text-[0.95rem] sm:text-[0.98rem] leading-relaxed space-y-3 text-justify">
+      <p>
+        Promoted in the early 1980s under the leadership of Mr. Chinnaswamy Kanakaraj, Advent Systems is among the earliest IT/ITES organizations in the region. As one of the earliest partners of Tally in India, Advent has been at the forefront of Sales, Support, Training, and Customization of Tally for over three decades.
+      </p>
+      <p>
+        With a seasoned team bringing 50+ years of combined expertise, Advent supports a strong base of 3,500+ Tally customers, spanning MSMEs, consultants, auditors, and trading and manufacturing organizations.
+      </p>
+      <p>
+        Today, Team Advent continues its legacy of excellence by embracing AI-powered advancements across Sales and Service functions—delivering greater efficiency, insights, and value to its customers.
+      </p>
+    </div>
+  </div>
+</div>
 
-              {/* Red badge */}
-              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white 
-                             text-[10px] leading-[18px] text-center shadow">
-                New
-              </span>
-            </button>
+    </div>
 
-            <button
-              onClick={() => setLocation("/learn")}
-              className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 sm:px-6 sm:py-3 
-                       bg-white/90 text-green-600 border border-green-500 font-semibold shadow 
-                       hover:bg-white active:scale-[0.99] transition"
-              title="Explore Solutions"
-            >
-              <span>Learn Tally </span>
-              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
-                <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-              </svg>
+    {/* Highlights / Stats */}
+    <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="text-2xl font-extrabold text-blue-700">3,500+</div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Customers Served</div>
+      </div>
+      <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="text-2xl font-extrabold text-blue-700">30+ yrs</div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Tally Partnership</div>
+      </div>
+      <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="text-2xl font-extrabold text-blue-700">50+ yrs</div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Team Expertise</div>
+      </div>
+      <div className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="text-2xl font-extrabold text-blue-700">MSMEs → Enterprise</div>
+        <div className="mt-1 text-xs font-medium text-slate-600">Across Industries</div>
+      </div>
+    </div>
 
-              {/* Red badge */}
-              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white 
-                             text-[10px] leading-[18px] text-center shadow">
-                Popular Choice
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <svg
-          className="text-blue-50"
-          viewBox="0 0 1440 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            fill="currentColor"
-            d="M0,64L60,69.3C120,75,240,85,360,69.3C480,53,600,11,720,10.7C840,11,960,53,1080,64C1200,75,1320,53,1380,42.7L1440,32L1440,80L1380,80C1320,80,1200,80,1080,80C960,80,840,80,720,80C600,80,480,80,360,80C240,80,120,80,60,80L0,80Z"
-          />
+    {/* AI banner card */}
+    
+    {/* CTAs */}
+    <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+      <button
+        onClick={() => setLocation("/products")}
+        className="group relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white font-semibold shadow-lg shadow-blue-700/25 hover:from-blue-800 hover:via-blue-800 hover:to-blue-700 active:scale-[0.99] transition"
+        title="Services and Solutions offered by Advent Systems"
+      >
+        <span className="absolute inset-0 rounded-full opacity-0 transition group-hover:opacity-100 [background:radial-gradient(120px_60px_at_10%_10%,rgba(255,255,255,.15),transparent_50%)]" />
+        View Solutions
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-90">
+          <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
         </svg>
-      </section>
+      </button>
+      <button
+        onClick={() => setLocation("/learn")}
+        className="relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 bg-white/90 text-green-700 border border-green-300 font-semibold shadow hover:bg-white active:scale-[0.99] transition"
+        title="Learn Tally"
+      >
+        Learn Tally
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-80">
+          <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+        </svg>
+        <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white text-[10px] leading-[18px] text-center shadow">
+          Popular
+        </span>
+      </button>
+      <button
+          onClick={() => setLocation("/ai")}
+          className="relative inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 bg-blue-700 text-white text-sm font-semibold shadow-lg shadow-blue-700/25 hover:bg-blue-800 active:scale-[0.99] transition"
+          title="Explore AI Assistant"
+        >
+          Launch Assistant
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" className="opacity-90">
+            <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+          </svg>
+          <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-red-600 text-white text-[10px] leading-[18px] text-center shadow">
+            New
+          </span>
+        </button>
+    </div>
+
+    {/* Subtext / trust copy */}
+    <p className="mt-6 text-center text-xs text-blue-900/70">
+      Trusted by 3,500+ customers across Coimbatore and Tamil Nadu for Tally solutions and services
+      </p>
+  </div>
+</section>
+
 
       {/* Awards and Accolades: continuous loop */}
       <section className="relative py-10 sm:py-16 overflow-hidden">
@@ -439,90 +478,124 @@ customers.
 
       {/* Solutions */}
       <section id="solutions" className="relative py-12 sm:py-16 bg-white overflow-hidden">
-        <SolutionsBackground />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Icon + Heading */}
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-              <Boxes className="w-5 h-5" />
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Our Core and <span className="text-blue-700">Advanced Solutions </span>
-            </h2>
-          </div>
+  <SolutionsBackground />
 
-          {/* Tagline */}
-          <p className="text-blue-900/80 text-sm sm:text-base text-center mb-12">
-            Modern solutions designed to empower your business, built on Tally’s Power of Simplicity
-            — making them easy, effective, and ready at your fingertips
+  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Icon + Heading */}
+    <div className="flex items-center justify-center gap-3 mb-2">
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+        <Boxes className="w-5 h-5" />
+      </span>
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+        Our Core and <span className="text-blue-700">Advanced Solutions</span>
+      </h2>
+    </div>
+
+    {/* Tagline */}
+    <p className="text-blue-900/80 text-sm sm:text-base text-center mb-10 sm:mb-12">
+      Modern solutions designed to empower your business, built on Tally’s Power of Simplicity — easy, effective, and ready at your fingertips
+    </p>
+
+    {/* Core Solutions */}
+    <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4 pl-4">
+      <span className="text-blue-700">Core Solutions</span>
+    </h3>
+
+    <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {displayed1Solutions.map((item, idx) => (
+        <article
+          key={idx}
+          className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+        >
+          {/* top sheen */}
+          <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
+          {/* corner glow */}
+          <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+          <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+
+          <div className="mb-2 flex items-start gap-2">
+            <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
+            <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+              {item.title}
+            </h4>
+          </div>
+          <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+            {item.desc}
           </p>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 ml-2 mb-2 pl-4 pb-2">
-               <span className="text-blue-700">Core Solutions</span>
-            </h1>
 
-          <div className="relative">
-            {/* Left-side vertical line */}
-            <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-300 via-blue-500 to-blue-300" />
-            {/* Cards */}
-            <div className="ml-10 sm:ml-16 space-y-4">
-              {displayedSolutions.map((item, idx) => (
-                <TimelineItemRight key={idx} item={item} />
-              ))}
-            </div>
+          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+        </article>
+      ))}
+    </div>
+
+    {solutions.length > 6 && (
+      <div className="text-center mt-8 sm:mt-10">
+        <button
+          onClick={() => setShowAllSolutions(!showAllSolutions)}
+          className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
+                     bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
+                     font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
+                     active:scale-[0.99] transition relative overflow-hidden"
+        >
+          <span className="relative">{showAllSolutions ? 'Show Less' : 'View More'}</span>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+          </svg>
+        </button>
+      </div>
+    )}
+
+    {/* Advanced Solutions */}
+    <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4 mt-10 sm:mt-12 pl-4">
+      <span className="text-blue-700">Advanced Solutions</span>
+    </h3>
+
+    <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {displayedSolutions.map((item, idx) => (
+        <article
+          key={idx}
+          className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white/95 p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+        >
+          {/* top sheen */}
+          <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/20 to-transparent" />
+          {/* corner glow */}
+          <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+          <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+
+          <div className="mb-2 flex items-start gap-2">
+            <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-blue-600 ring-4 ring-blue-100/70" aria-hidden="true" />
+            <h4 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+              {item.title}
+            </h4>
           </div>
+          <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+            {item.desc}
+          </p>
 
-          {solutions.length > 5 && (
-            <div className="text-center mt-10">
-              <button
-                onClick={() => setShowAllSolutions(!showAllSolutions)}
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
-                       bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
-                       font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
-                       active:scale-[0.99] transition relative overflow-hidden"
-              >
-                <span className="relative">
-                  {showAllSolutions ? 'Show Less' : 'View More'}
-                </span>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-          )}
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 ml-2 mb-2 pl-4 pb-2 pt-4 mt-4">
-               <span className="text-blue-700">Advanced Solutions</span>
-            </h1>
-          <div className="relative">
-            {/* Left-side vertical line */}
-            <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-300 via-blue-500 to-blue-300" />
-            {/* Cards */}
-            <div className="ml-10 sm:ml-16 space-y-4">
-              {displayed1Solutions.map((item, idx) => (
-                <TimelineItemRight key={idx} item={item} />
-              ))}
-            </div>
-          </div>
+          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+        </article>
+      ))}
+    </div>
 
-          {solutions.length > 5 && (
-            <div className="text-center mt-10">
-              <button
-                onClick={() => setShowAllSolutions(!showAllSolutions)}
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
-                       bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
-                       font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
-                       active:scale-[0.99] transition relative overflow-hidden"
-              >
-                <span className="relative">
-                  {showAllSolutions ? 'Show Less' : 'View More'}
-                </span>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
+    {solutions.length > 6 && (
+      <div className="text-center mt-8 sm:mt-10">
+        <button
+          onClick={() => setShowAllSolutions(!showAllSolutions)}
+          className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5
+                     bg-gradient-to-r from-blue-700 via-blue-700 to-blue-600 text-white 
+                     font-semibold shadow-lg shadow-blue-700/25 hover:shadow-xl hover:via-blue-800 hover:to-blue-700
+                     active:scale-[0.99] transition relative overflow-hidden"
+        >
+          <span className="relative">{showAllSolutions ? 'Show Less' : 'View More'}</span>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M7.5 5l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+          </svg>
+        </button>
+      </div>
+    )}
+  </div>
+</section>
+
       
 
       {/* Customer Experiences */}
@@ -1096,16 +1169,69 @@ function TestimonialsBackground() {
 /* ---------- Components used ---------- */
 function TimelineItemRight({ item }: { item: { title: string; desc: string } }) {
   return (
-    <div className="relative">
-      {/* Connector dot */}
-      <span className="absolute -left-6 sm:-left-10 top-5 h-4 w-4 rounded-full bg-white border-4 border-blue-500 shadow" />
-      <div className="bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-        <p className="text-gray-600 text-sm">{item.desc}</p>
+    <div className="relative pl-6 sm:pl-10">
+      {/* Connector line (optional; uncomment if you render a vertical line) */}
+      {/* <span className="pointer-events-none absolute left-0 sm:left-1 top-0 bottom-0 w-px bg-gradient-to-b from-blue-200 via-blue-100 to-transparent" /> */}
+
+      {/* Connector dot with subtle outer ring */}
+      <span className="absolute -left-2.5 sm:-left-3.5 top-5 grid place-items-center">
+        <span className="h-3.5 w-3.5 rounded-full bg-white shadow ring-2 ring-blue-600" />
+        <span className="absolute h-6 w-6 rounded-full bg-blue-500/10 blur-[2px]" />
+      </span>
+
+      {/* Card */}
+      <div className="rounded-lg border border-slate-200/80 bg-white/95 shadow-sm transition-all duration-200 hover:shadow-md">
+        <div className="p-4 sm:p-5">
+          <h3 className="text-[1.05rem] font-semibold tracking-tight text-slate-900 mb-1.5">
+            {item.title}
+          </h3>
+          <p className="text-slate-600 text-[0.92rem] leading-relaxed">
+            {item.desc}
+          </p>
+        </div>
+
+        {/* Bottom micro-divider accent */}
+        <div className="px-4 sm:px-5 pb-3">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-blue-200/50 to-transparent" />
+        </div>
       </div>
     </div>
   );
 }
+function CardsGridPremium({ items }: { items: Item[] }) {
+  return (
+    <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((item, i) => (
+        <div
+          key={i}
+          className="group relative overflow-hidden rounded-xl border border-slate-200/70 bg-gradient-to-br from-white/85 to-blue-50/40 backdrop-blur p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+        >
+          {/* Top sheen */}
+          <span className="pointer-events-none absolute inset-x-4 -top-1 h-px bg-gradient-to-r from-transparent via-blue-600/25 to-transparent" />
+          {/* Corner glows */}
+          <span className="pointer-events-none absolute -top-3 -left-3 h-12 w-12 rounded-full bg-blue-500/10 blur-xl" />
+          <span className="pointer-events-none absolute -bottom-4 -right-4 h-16 w-16 rounded-full bg-indigo-500/10 blur-[18px]" />
+
+          <div className="mb-2 flex items-start gap-2">
+            <span className="mt-1 grid place-items-center">
+              <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+            </span>
+            <h3 className="text-[1.03rem] font-semibold tracking-tight text-slate-900">
+              {item.title}
+            </h3>
+          </div>
+
+          <p className="text-slate-600 text-[0.9rem] sm:text-[0.92rem] leading-relaxed">
+            {item.desc}
+          </p>
+
+          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-blue-200/60 to-transparent" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 
 function TestimonialCard({
   name,
